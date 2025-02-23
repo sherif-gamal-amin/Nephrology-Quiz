@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nephrology Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            user-select: none; /* يمنع تحديد النص */
+            -webkit-user-select: none; /* لمتصفحات WebKit مثل Chrome وSafari */
+            -moz-user-select: none; /* لمتصفح Firefox */
+            -ms-user-select: none; /* لمتصفح Internet Explorer/Edge */
+        }
+        @media print { /* إخفاء الصفحة عند الطباعة */
+            body { 
+                display: none;
+            }
+        }
+
+        .quiz-container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .timer {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            display: none;
+        }
+        .incorrect {
+            color: red;
+        }
+        .correct {
+            color: green;
+        }
+        .question-result {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        img {
+            pointer-events: none; /* يمنع سحب الصور */
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Nephrology Quiz</h1>
+        <div class="timer" id="timer">Time remaining: 60 seconds</div>
+
+        <div class="question" id="question-1">
+            <p>76-year-old man presents to the emergency room. He had influenza and now complains of diffuse muscle pain and weakness. His medical history is remarkable for osteoarthritis for which he takes ibuprofen, and hypercholesterolemia for which he takes lovastatin. Physical examination reveals blood pressure of 130/90 with no orthostatic change. The only other finding is diffuse muscle tenderness. Laboratory data include
+            BUN: 30 mg/dL
+            Creatinine: 6 mg/dL
+            K: 6.0 mEq/L
+            Uric acid: 18 mg/dL
+            Ca: 6.5 mg/dL
+            Po4: 7.5 mg/dL
+            UA: large blood, 2+ protein. Microscopic study shows muddy brown casts and 0 to 2 RBC/hpf (red blood cells/high power field).
+            Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Nonsteroidal anti-inflammatory drug-induced acute kidney injury (AKI)"> Nonsteroidal anti-inflammatory drug-induced acute kidney injury (AKI)</label>
+                <label><input type="radio" name="q1" value="Volume depletion"> Volume depletion</label>
+                <label><input type="radio" name="q1" value="Rhabdomyolysis-induced acute kidney injury"> Rhabdomyolysis-induced acute kidney injury</label>
+                <label><input type="radio" name="q1" value="Urinary tract obstruction"> Urinary tract obstruction</label>
+                <label><input type="radio" name="q1" value="Hypertensive nephrosclerosis"> Hypertensive nephrosclerosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-2">
+            <p>67-year-old man with a history of gout presents with intense pain in his right great toe. He has a complex medical history, including hypertension, coronary artery disease, congestive heart failure, myelodysplasia, and chronic kidney disease with a baseline creatinine of 3.2 mg/dL and a uric acid level of 10 mg/dL. His medications include aspirin, simvastatin, clopidogrel, furosemide, amlodipine, and metoprolol. What is the best therapy in this situation?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="Colchicine 1.2 mg po initially, followed by 0.6 mg 1 hour later"> Colchicine 1.2 mg po initially, followed by 0.6 mg 1 hour later</label>
+                <label><input type="radio" name="q2" value="Allopurinol 100 mg po daily, titrated to uric acid less than 6 mg/dL"> Allopurinol 100 mg po daily, titrated to uric acid less than 6 mg/dL</label>
+                <label><input type="radio" name="q2" value="Prednisone 40 mg po daily"> Prednisone 40 mg po daily</label>
+                <label><input type="radio" name="q2" value="Naproxen 750 mg po once followed by 250 mg po tid"> Naproxen 750 mg po once followed by 250 mg po tid</label>
+                <label><input type="radio" name="q2" value="Probenecid 250 mg po bid"> Probenecid 250 mg po bid</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-3">
+            <p>60-year-old diabetic woman develops angina and will need a coronary angiogram for evaluation of coronary artery disease. She has a creatinine of 2.2. Which of the following is the most effective in reducing the risk of contrast-induced nephropathy?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Administer mannitol immediately after the contrast is given"> Administer mannitol immediately after the contrast is given</label>
+                <label><input type="radio" name="q3" value="Perform prophylactic hemodialysis after the procedure"> Perform prophylactic hemodialysis after the procedure</label>
+                <label><input type="radio" name="q3" value="Give IV hydration with normal saline or sodium bicarbonate prior to and following the procedure"> Give IV hydration with normal saline or sodium bicarbonate prior to and following the procedure</label>
+                <label><input type="radio" name="q3" value="Indomethacin 25 mg the morning of the procedure"> Indomethacin 25 mg the morning of the procedure</label>
+                <label><input type="radio" name="q3" value="Dopamine infusion before and after the procedure"> Dopamine infusion before and after the procedure</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-4">
+            <p>23-year-old woman with no other medical history was diagnosed with hypertension 6 months ago. She was initially treated with hydrochlorothiazide, followed by the addition of lisinopril, followed by a calcium channel blocker, but her blood pressure has not been well controlled. She assures the provider that she is taking all of her medicines. On examination her blood pressure is 165/105 in each arm, and 168/105 when checked by large cuff in the lower extremities. Her pulse is 60. Cardiac examination reveals an S4 gallop but no murmurs. She has a soft mid-abdominal bruit. Distal pulses are intact and equal. She does not have hyperpigmentation, hirsutism, genital abnormalities, or unusual distribution of fat. Her sodium is 140, potassium 4.0, HCO3 22, BUN 15, and creatinine 1.5. Which of the following is the most likely cause of her difficult-to-control hypertension?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="Primary hyperaldosteronism (Conn syndrome)"> Primary hyperaldosteronism (Conn syndrome)</label>
+                <label><input type="radio" name="q4" value="Cushing syndrome"> Cushing syndrome</label>
+                <label><input type="radio" name="q4" value="Congenital adrenal hyperplasia"> Congenital adrenal hyperplasia</label>
+                <label><input type="radio" name="q4" value="Renal artery fibromuscular dysplasia"> Renal artery fibromuscular dysplasia</label>
+                <label><input type="radio" name="q4" value="Coarctation of the aorta"> Coarctation of the aorta</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-5">
+            <p>47-year-old HIV-positive man is brought to the emergency room because of weakness. The patient has HIV nephropathy and adrenal insufficiency. He takes trimethoprim-sulfamethoxazole for PCP prophylaxis and is on triple-agent antiretroviral treatment. He was recently started on spironolactone for ascites due to alcoholic liver disease. Physical examination reveals normal vital signs, but his muscles are diffusely weak. Frequent extrasystoles are noted. He has mild ascites and 1+ peripheral edema. Laboratory studies show a serum creatinine of 2.5 with a potassium value of 7.3 mEq/L. ECG shows peaking of the T-waves and QRS widening to 0.14. What is the most important immediate treatment?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="Sodium polystyrene sulfonate (Kayexalate)"> Sodium polystyrene sulfonate (Kayexalate)</label>
+                <label><input type="radio" name="q5" value="Acute hemodialysis"> Acute hemodialysis</label>
+                <label><input type="radio" name="q5" value="IV normal saline"> IV normal saline</label>
+                <label><input type="radio" name="q5" value="IV calcium gluconate"> IV calcium gluconate</label>
+                <label><input type="radio" name="q5" value="IV furosemide 80 mg stat"> IV furosemide 80 mg stat</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-6">
+            <p>73-year-old man undergoes abdominal aortic aneurysm repair. According to the anesthesia record, he develops hypotension to 80/50 during the procedure; his blood pressure returns to normal with transfusion of four units of packed red blood cells. Postoperatively, his blood pressure is 110/70, heart rate is 110, surgical wound is clean, and a Foley catheter is in place. Over the next 2 days his urine output slowly decreases. His creatinine on postop day 3 is 3.5 mg/dL(baseline 1.2). His sodium is 140 mEq/L, K 4.6 mEq/L, and BUN 50 mg/dL. Hemoglobin and hematocrit are stable. Urinalysis shows occasional granular casts but otherwise is normal. Urine sodium is 50 mEq/L, urine osmolality is 290 mOsmol/L, and urine creatinine is 35 mg/dL. The fractional excretion of sodium (FeNa) based on these data is 3.5. What is the most likely cause of this patient’s acute kidney injury?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="Acute interstitial nephritis"> Acute interstitial nephritis</label>
+                <label><input type="radio" name="q6" value="Acute glomerulonephritis (GN)"> Acute glomerulonephritis (GN)</label>
+                <label><input type="radio" name="q6" value="Acute tubular necrosis"> Acute tubular necrosis</label>
+                <label><input type="radio" name="q6" value="Prerenal azotemia"> Prerenal azotemia</label>
+                <label><input type="radio" name="q6" value="Contrast-induced nephropathy"> Contrast-induced nephropathy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-7">
+            <p>85-year-old man who resides in a nursing home presents with a 3-day history of lower abdominal pain and increasing fatigue and lethargy. He is afebrile; his BP is 160/92, and RR 16. His lungs are clear and his heart examination normal. There is diffuse abdominal tenderness on palpation and a large area of fullness and dullness to percussion starting just below the umbilicus and extending to the suprapubic area. His serum sodium is 130 mEq/L, potassium 4.9 mEq/L, BUN 75 mg/dL, and creatinine is 3.5 mg/dL. His baseline BUN and creatinine were 25 and 1.3, respectively, as recently as 2 weeks ago. A Foley catheter is placed and 1200 cc of urine is obtained. What will be the likely clinical course for this patient with regard to his renal function?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="His creatinine will continue to rise slowly for 2 to 3 more days"> His creatinine will continue to rise slowly for 2 to 3 more days</label>
+                <label><input type="radio" name="q7" value="His creatinine will return to 1.3 over the next week"> His creatinine will return to 1.3 over the next week</label>
+                <label><input type="radio" name="q7" value="He will require dialysis within 24 hours"> He will require dialysis within 24 hours</label>
+                <label><input type="radio" name="q7" value="He will produce minimal urinary output for at least 3 days"> He will produce minimal urinary output for at least 3 days</label>
+                <label><input type="radio" name="q7" value="His renal function is unlikely to show any improvement in the future and 3.5 will be his new baseline"> His renal function is unlikely to show any improvement in the future and 3.5 will be his new baseline</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-8">
+            <p>25-year-old man is referred to you because of hematuria. He noticed brief reddening of the urine at the time of a recent respiratory infection. The gross hematuria resolved, but his physician found microscopic hematuria on two subsequent first-voided morning urine specimens. The patient is otherwise healthy; he does not smoke. His blood pressure is 114/72 and the physical examination is normal. The urinalysis shows 2+ protein and 10 to 15 RBC/hpf, with some dysmorphic erythrocytes. No WBC or casts are seen. What is the most likely cause of his hematuria?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="Kidney stone"> Kidney stone</label>
+                <label><input type="radio" name="q8" value="Renal cell carcinoma"> Renal cell carcinoma</label>
+                <label><input type="radio" name="q8" value="Acute poststreptococcal glomerulonephritis"> Acute poststreptococcal glomerulonephritis</label>
+                <label><input type="radio" name="q8" value="Chronic prostatitis"> Chronic prostatitis</label>
+                <label><input type="radio" name="q8" value="IgA nephropathy (Berger disease)"> IgA nephropathy (Berger disease)</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-9">
+            <p>21-year-old woman complains of urinary frequency, nocturia, constipation and polydipsia. Her symptoms started 2 weeks ago and prior to this she would urinate twice a day and never at night. She has also noticed general malaise and some pain in her left flank. A urine dipstick is normal. The most appropriate investigation is:</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="Serum phosphate"> Serum phosphate</label>
+                <label><input type="radio" name="q9" value="Serum calcium"> Serum calcium</label>
+                <label><input type="radio" name="q9" value="Parathyroid hormone (PTH)"> Parathyroid hormone (PTH)</label>
+                <label><input type="radio" name="q9" value="Plasma glucose"> Plasma glucose</label>
+                <label><input type="radio" name="q9" value="Serum potassium"> Serum potassium</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-10">
+            <p>50-year-old diabetic woman presents for follow-up of her hypertension. Her blood pressure is 152/96 in the office today and she brings in readings from home that are consistently in the same range over the past month. Her current medications are amlodipine 5 mg daily and hydrochlorothiazide 25 mg daily. The diuretic was added when she developed peripheral edema on the amlodipine; now she has only trace peripheral edema. A spot urine specimen shows 280 μg of albumin per mg creatinine (microalbuminuria is present if this value is between 30 and 300 μg/mg). What would be the best next therapeutic step in this patient?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="Add clonidine"> Add clonidine</label>
+                <label><input type="radio" name="q10" value="Add a beta-blocker"> Add a beta-blocker</label>
+                <label><input type="radio" name="q10" value="Increase the thiazide diuretic dose"> Increase the thiazide diuretic dose</label>
+                <label><input type="radio" name="q10" value="Add an alpha-blocker"> Add an alpha-blocker</label>
+                <label><input type="radio" name="q10" value="Add angiotensin-converting enzyme inhibitor or angiotensin receptor blocker"> Add angiotensin-converting enzyme inhibitor or angiotensin receptor blocker</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-11">
+            <p>29-year-old man with HIV, on a highly active antiretroviral therapy (HAART) regimen including the protease inhibitor indinavir, presents with severe edema and a serum creatinine of 2.0 mg/dL. He has had bone pain for 5 years and takes large amounts of acetaminophen with codeine, aspirin, and ibuprofen. He is on prophylactic trimethoprim sulfamethoxazole. Blood pressure is 170/110; urinalysis shows 4+ protein, 5 to 10 RBC, 0 WBC; 24-hour urine protein is 6.2 g. The serum albumin is 1.9 g/dL(normal above 3.7). Which of the following is the most likely cause of his renal disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="Indinavir toxicity"> Indinavir toxicity</label>
+                <label><input type="radio" name="q11" value="Analgesic nephropathy"> Analgesic nephropathy</label>
+                <label><input type="radio" name="q11" value="Trimethoprim-sulfamethoxazole–induced interstitial nephritis"> Trimethoprim-sulfamethoxazole–induced interstitial nephritis</label>
+                <label><input type="radio" name="q11" value="Focal segmental glomerulosclerosis"> Focal segmental glomerulosclerosis</label>
+                <label><input type="radio" name="q11" value="Renal artery stenosis"> Renal artery stenosis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-12">
+            <p>12- 72-year-old woman who has been on the ward for the past five days is noted by the nurses not to be passing much urine. She was admitted originally with pneumonia but has since developed diarrhea. Blood tests show her creatinine has increased from 98 to 172 µmol/l. Which one of the following tests is most useful when determining whether there is prerenal uraemia or acute tubular necrosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="Serum urea level"> Serum urea level</label>
+                <label><input type="radio" name="q12" value="Haemoglobin concentration"> Haemoglobin concentration</label>
+                <label><input type="radio" name="q12" value="Plasma osmolality"> Plasma osmolality</label>
+                <label><input type="radio" name="q12" value="Urinary urea"> Urinary urea</label>
+                <label><input type="radio" name="q12" value="Urinary sodium"> Urinary sodium</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-13">
+            <p>13- The “dose” of dialysis is currently defined as which of the following?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="The counter-current flow rate of the dialysate"> The counter-current flow rate of the dialysate</label>
+                <label><input type="radio" name="q13" value="The fractional urea clearance"> The fractional urea clearance</label>
+                <label><input type="radio" name="q13" value="The hours per week of dialysis"> The hours per week of dialysis</label>
+                <label><input type="radio" name="q13" value="The number of sessions actually completed in a month"> The number of sessions actually completed in a month</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-14">
+            <p>14- Autosomal dominant polycystic kidney disease type 1 is associated with a gene defect in ..</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="Chromosome 4"> Chromosome 4</label>
+                <label><input type="radio" name="q14" value="Chromosome 8"> Chromosome 8</label>
+                <label><input type="radio" name="q14" value="Chromosome 12"> Chromosome 12</label>
+                <label><input type="radio" name="q14" value="Chromosome 16"> Chromosome 16</label>
+                <label><input type="radio" name="q14" value="Chromosome 20"> Chromosome 20</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-15">
+            <p>15- 65 years-old man with a history of hypertension is reviewed. As part of routine blood tests to monitor his renal function whilst taking ramipril the following blood tests are received:</p>
+            <p>Na+ 140 mmol/l</p>
+            <p>K+ 4.8 mmol/l</p>
+            <p>Urea 6.2 mmol/l</p>
+            <p>Creatinine 102 μmol/l</p>
+            <p>eGFR 68 ml/min</p>
+            <p>A urine dipstick is subsequently performed which is normal and a renal ultrasound shows normal sized kidneys with no abnormality detected. What stage of chronic kidney disease does this patient have?</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="No chronic kidney disease"> No chronic kidney disease</label>
+                <label><input type="radio" name="q15" value="Chronic kidney disease stage 4"> Chronic kidney disease stage 4</label>
+                <label><input type="radio" name="q15" value="Chronic kidney disease stage 3"> Chronic kidney disease stage 3</label>
+                <label><input type="radio" name="q15" value="Chronic kidney disease stage 2"> Chronic kidney disease stage 2</label>
+                <label><input type="radio" name="q15" value="Chronic kidney disease stage 1"> Chronic kidney disease stage 1</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-16">
+            <p>16- 29-year-old man is stable 1 year post-kidney transplant. Which of the following complications of transplantation is the most likely cause of death?</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="atherosclerotic disease"> atherosclerotic disease</label>
+                <label><input type="radio" name="q16" value="opportunistic infection"> opportunistic infection</label>
+                <label><input type="radio" name="q16" value="metabolic bone disease"> metabolic bone disease</label>
+                <label><input type="radio" name="q16" value="lung cancer"> lung cancer</label>
+                <label><input type="radio" name="q16" value="lymphoma"> lymphoma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-17">
+            <p>17- 37-year-old immunosuppressed patient with renal failure develops sepsis. Which of the following antibiotics, if used, would require a major reduction in dosage?</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="erythromycin"> erythromycin</label>
+                <label><input type="radio" name="q17" value="doxycycline"> doxycycline</label>
+                <label><input type="radio" name="q17" value="Levofloxacin"> Levofloxacin</label>
+                <label><input type="radio" name="q17" value="isoniazid (INH)"> isoniazid (INH)</label>
+                <label><input type="radio" name="q17" value="amphotericin B"> amphotericin B</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-18">
+            <p>18- 63-year-old woman presents for routine evaluation. She has had diabetes for the past 12 years with complications of neuropathy and retinopathy. You decide to screen her for renal complications of diabetes. Which of the following findings is not compatible with diabetic nephropathy?</p>
+            <div class="options">
+                <label><input type="radio" name="q18" value="nephrotic range proteinuria"> nephrotic range proteinuria</label>
+                <label><input type="radio" name="q18" value="microalbuminuria"> microalbuminuria</label>
+                <label><input type="radio" name="q18" value="hypertension"> hypertension</label>
+                <label><input type="radio" name="q18" value="red blood cell (RBC) casts in urine"> red blood cell (RBC) casts in urine</label>
+                <label><input type="radio" name="q18" value="renal tubular acidosis (RTA) type IV"> renal tubular acidosis (RTA) type IV</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-19">
+            <p>19- 24-year-old woman is dipstick positive for blood in her urine. This is repeated twice between menstrual periods and remains positive. Microscopic evaluation reveals RBCs, some of which are deformed and some in the form of casts. Which of the following is the most likely cause of the hematuria?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="urinary tract stones"> urinary tract stones</label>
+                <label><input type="radio" name="q19" value="GN"> GN</label>
+                <label><input type="radio" name="q19" value="trauma"> trauma</label>
+                <label><input type="radio" name="q19" value="benign renal tumor"> benign renal tumor</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-20">
+            <p>20- 63-year-old man becomes oliguric 2 days following an open cholecystectomy. Which of the following findings would suggest that prerenal ARF is a major factor in the etiology?</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="postural hypotension"> postural hypotension</label>
+                <label><input type="radio" name="q20" value="fractional excretion of sodium is 3%"> fractional excretion of sodium is 3%</label>
+                <label><input type="radio" name="q20" value="specific gravity is 1.012"> specific gravity is 1.012</label>
+                <label><input type="radio" name="q20" value="the urine sodium is 30 mEq/L"> the urine sodium is 30 mEq/L</label>
+                <label><input type="radio" name="q20" value="heme-granular casts on urine microscopy"> heme-granular casts on urine microscopy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-21">
+            <p>21- 65-year-old man who is known to have colorectal cancer is referred to the renal clinic. His GP performed a protein-creatinine ratio as he had been complaining of 'frothy' urine. The results suggest nephrotic range proteinuria which is confirmed on a 24-hour urinary collection. Assuming the proteinuria is related to his colorectal cancer what is the renal histology most likely to show?</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="Mesangiocapillary glomerulonephritis"> Mesangiocapillary glomerulonephritis</label>
+                <label><input type="radio" name="q21" value="Minimal change glomerulonephritis"> Minimal change glomerulonephritis</label>
+                <label><input type="radio" name="q21" value="Focal segmental glomerulosclerosis"> Focal segmental glomerulosclerosis</label>
+                <label><input type="radio" name="q21" value="Membranous glomerulonephritis"> Membranous glomerulonephritis</label>
+                <label><input type="radio" name="q21" value="Membranoproliterative glomerulonephritis"> Membranoproliterative glomerulonephritis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-22">
+            <p>22- 25-year-old man has a renal biopsy due to worsening renal function. This reveals linear IgG deposits along the basement membrane. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="Systemic lupus erythematosus"> Systemic lupus erythematosus</label>
+                <label><input type="radio" name="q22" value="IgA nephropathy"> IgA nephropathy</label>
+                <label><input type="radio" name="q22" value="Minimal change disease"> Minimal change disease</label>
+                <label><input type="radio" name="q22" value="Post-streptococcal glomerulonephritis"> Post-streptococcal glomerulonephritis</label>
+                <label><input type="radio" name="q22" value="Goodpasture's syndrome"> Goodpasture's syndrome</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-23">
+            <p>23- 27-year-old man is diagnosed with Goodpasture syndrome. Which one of the following does not increase the likelihood of a pulmonary hemorrhage?</p>
+            <div class="options">
+                <label><input type="radio" name="q23" value="Smoking"> Smoking</label>
+                <label><input type="radio" name="q23" value="Inhalation of hydrocarbons"> Inhalation of hydrocarbons</label>
+                <label><input type="radio" name="q23" value="Male gender"> Male gender</label>
+                <label><input type="radio" name="q23" value="Dehydration"> Dehydration</label>
+                <label><input type="radio" name="q23" value="Lower respiratory tract infection"> Lower respiratory tract infection</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-24">
+            <p>24- Which one of the following is associated with a better prognosis in patients with IgA nephropathy?</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="Heavy proteinuria at presentation"> Heavy proteinuria at presentation</label>
+                <label><input type="radio" name="q24" value="Male gender"> Male gender</label>
+                <label><input type="radio" name="q24" value="Hyperlipidaemia"> Hyperlipidaemia</label>
+                <label><input type="radio" name="q24" value="Frank haematuria"> Frank haematuria</label>
+                <label><input type="radio" name="q24" value="ACE genotype DD"> ACE genotype DD</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-25">
+            <p>25- Which one of the following types of glomerulonephritis is most characteristically associated with streptococcal infection in children?</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="Focal segmental glomerulosclerosis"> Focal segmental glomerulosclerosis</label>
+                <label><input type="radio" name="q25" value="Diffuse proliferative glomerulonephritis"> Diffuse proliferative glomerulonephritis</label>
+                <label><input type="radio" name="q25" value="Membranous glomerulonephritis"> Membranous glomerulonephritis</label>
+                <label><input type="radio" name="q25" value="Mesangiocapillary glomerulonephritis"> Mesangiocapillary glomerulonephritis</label>
+                <label><input type="radio" name="q25" value="Rapidly progressive glomerulonephritis"> Rapidly progressive glomerulonephritis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-26">
+            <p>26- 35 year old female is admitted to hospital with hypovolemic shock. CT abdomen reveals a hemorrhagic lesion in the right Kidney. Following surgery and biopsy this is shown to be an angiomyolipomata. What is the most likely underlying diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q26" value="Neurofibromatosis"> Neurofibromatosis</label>
+                <label><input type="radio" name="q26" value="Budd-Chiari syndrome"> Budd-Chiari syndrome</label>
+                <label><input type="radio" name="q26" value="Hereditary hemorrhagic telangiectasia"> Hereditary hemorrhagic telangiectasia</label>
+                <label><input type="radio" name="q26" value="Von Hippel-lindau syndrome"> Von Hippel-lindau syndrome</label>
+                <label><input type="radio" name="q26" value="Tuberous sclerosis"> Tuberous sclerosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-27">
+            <p>27- 62 years-old man with chronic kidney disease secondary to diabetes mellitus is reviewed. When assessing his estimated glomerular filtration rate (eGFR), which one of the following variables is not required by the Modification of Diet in Renal Disease (MDRD) equation?</p>
+            <div class="options">
+                <label><input type="radio" name="q27" value="Age"> Age</label>
+                <label><input type="radio" name="q27" value="Serum creatinine"> Serum creatinine</label>
+                <label><input type="radio" name="q27" value="Ethnicity"> Ethnicity</label>
+                <label><input type="radio" name="q27" value="Gender"> Gender</label>
+                <label><input type="radio" name="q27" value="Serum urea"> Serum urea</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-28">
+            <p>28- in stage V chronic kidney disease, GFR is below which of the following levels?</p>
+            <div class="options">
+                <label><input type="radio" name="q28" value="90"> 90</label>
+                <label><input type="radio" name="q28" value="60"> 60</label>
+                <label><input type="radio" name="q28" value="25"> 25</label>
+                <label><input type="radio" name="q28" value="15"> 15</label>
+                <label><input type="radio" name="q28" value="0 (anuria)"> 0 (anuria)</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-29">
+            <p>29- In patients with chronic renal failure, which of the following is the most important contributor to renal osteodystrophy?</p>
+            <div class="options">
+                <label><input type="radio" name="q29" value="Impaired renal production of 1,25 dihydroxy vitamin D3"> Impaired renal production of 1,25 dihydroxy vitamin D3</label>
+                <label><input type="radio" name="q29" value="Hypocalcemia"> Hypocalcemia</label>
+                <label><input type="radio" name="q29" value="Hypophosphatemia"> Hypophosphatemia</label>
+                <label><input type="radio" name="q29" value="Loss of vitamin D and calcium via dialysis"> Loss of vitamin D and calcium via dialysis</label>
+                <label><input type="radio" name="q29" value="The use of calcitriol"> The use of calcitriol</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-30">
+            <p>30- Which one of the following statements regarding the assessment of proteinuria in patients with chronic kidney disease is NOT true?</p>
+            <div class="options">
+                <label><input type="radio" name="q30" value="Albumin:creatinine ratio (ACR) is more sensitive than protein:creatinine ratio (PCR)"> Albumin:creatinine ratio (ACR) is more sensitive than protein:creatinine ratio (PCR)</label>
+                <label><input type="radio" name="q30" value="An ACR of 30 mg/mmol is approximately equal to a PCR of 50 mg/mmol"> An ACR of 30 mg/mmol is approximately equal to a PCR of 50 mg/mmol</label>
+                <label><input type="radio" name="q30" value="An ACR sample is collected over 24 hours"> An ACR sample is collected over 24 hours</label>
+                <label><input type="radio" name="q30" value="Women typically have higher ACR values"> Women typically have higher ACR values</label>
+                <label><input type="radio" name="q30" value="An ACR of 3.8 mg/mmol in a diabetic man is clinically significant"> An ACR of 3.8 mg/mmol in a diabetic man is clinically significant</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-31">
+            <p>31- 25-year-old woman presents with nausea and vomiting of 2 days duration. She is not on any medications and was previously well until now. Her physical examination is normal except for a postural drop in her blood pressure from 110/80 mm Hg supine to 90/80 mm Hg standing. Her serum electrolytes are sodium 130 mEq/L, potassium 3 mEq/L, chloride 90 mEq/L, bicarbonate 30 mEq/L, urea 50 mg/dL, and creatinine 0.8 mg/dL. Which of the following electrolytes is most likely to be filtered through the glomerulus but unaffected by tubular secretion?</p>
+            <div class="options">
+                <label><input type="radio" name="q31" value="potassium"> potassium</label>
+                <label><input type="radio" name="q31" value="sodium"> sodium</label>
+                <label><input type="radio" name="q31" value="bicarbonate"> bicarbonate</label>
+                <label><input type="radio" name="q31" value="urea"> urea</label>
+                <label><input type="radio" name="q31" value="creatinine"> creatinine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-32">
+            <p>32- 19-year-old man presents with malaise, nausea, and decreased urine output. He was previously well, and his physical examination is normal except for an elevated jugular venous pressure (JVP) and a pericardial rub. His electrolytes reveal acute renal failure (ARF). Which of the following findings on the urinalysis is most likely in keeping with acute glomerulonephritis (GN)?</p>
+            <div class="options">
+                <label><input type="radio" name="q32" value="proteinuria"> proteinuria</label>
+                <label><input type="radio" name="q32" value="white blood cell casts"> white blood cell casts</label>
+                <label><input type="radio" name="q32" value="granular casts"> granular casts</label>
+                <label><input type="radio" name="q32" value="erythrocyte casts"> erythrocyte casts</label>
+                <label><input type="radio" name="q32" value="hyaline casts"> hyaline casts</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-33">
+            <p>33- 24-year-old woman presents with nausea, vomiting, anorexia, and gross hematuria. She had a sore throat 2 weeks ago that resolved on its own. On examination, her blood pressure is 160/90 mm Hg, pulse 90/min, JVP is 7 cm, heart sounds are normal, there is 1+ pedal edema, and the lungs are clear. She has a renal biopsy. Which of the following electron microscopy findings on the renal biopsy is most likely in keeping with poststreptococcal GN?</p>
+            <div class="options">
+                <label><input type="radio" name="q33" value="diffuse mesangial deposits"> diffuse mesangial deposits</label>
+                <label><input type="radio" name="q33" value="no deposits"> no deposits</label>
+                <label><input type="radio" name="q33" value="electron-dense endothelial deposits"> electron-dense endothelial deposits</label>
+                <label><input type="radio" name="q33" value="closed capillary lumen"> closed capillary lumen</label>
+                <label><input type="radio" name="q33" value="subepithelial humps"> subepithelial humps</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-34">
+            <p>34- 68-year-old woman has used large amounts of analgesic for years to relieve severe headaches and arthritis. She now has an elevated urea and creatinine consistent with chronic renal failure. Which of the following changes in the kidney is most likely seen with her diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q34" value="glomerulosclerosis"> glomerulosclerosis</label>
+                <label><input type="radio" name="q34" value="papillary necrosis and tubulointerstitial inflammation"> papillary necrosis and tubulointerstitial inflammation</label>
+                <label><input type="radio" name="q34" value="cortical necrosis"> cortical necrosis</label>
+                <label><input type="radio" name="q34" value="tubular necrosis"> tubular necrosis</label>
+                <label><input type="radio" name="q34" value="nephrolithiasis"> nephrolithiasis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-35">
+            <p>35- 64-year-old woman develops severe diarrhea 2 weeks after finishing antibiotics for pneumonia. She has also noticed decreased urine output despite drinking lots of fluids. On examination, she has a postural drop in her blood pressure, the JVP is low, and the abdomen is soft but diffusely tender. Despite giving 4 L of normal saline, her urine output remains low. The urinalysis is positive for heme-granular casts and the urine sodium is 42 mEq/L. Which of the following medications should be held during the recovery phase of this woman’s ARF?</p>
+            <div class="options">
+                <label><input type="radio" name="q35" value="acetaminophen"> acetaminophen</label>
+                <label><input type="radio" name="q35" value="digoxin"> digoxin</label>
+                <label><input type="radio" name="q35" value="lorazepam"> lorazepam</label>
+                <label><input type="radio" name="q35" value="enalapril"> enalapril</label>
+                <label><input type="radio" name="q35" value="simvastatin"> simvastatin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-36">
+            <p>36- 64-year-old woman has metabolic alkalosis and the bicarbonate level is 34 mEq/L. Which of the following is the most likely cause?</p>
+            <div class="options">
+                <label><input type="radio" name="q36" value="diuretic use, vomiting"> diuretic use, vomiting</label>
+                <label><input type="radio" name="q36" value="hyperkalemia"> hyperkalemia</label>
+                <label><input type="radio" name="q36" value="mineralocorticoid deficiency"> mineralocorticoid deficiency</label>
+                <label><input type="radio" name="q36" value="diarrhea"> diarrhea</label>
+                <label><input type="radio" name="q36" value="angiotensin-converting enzyme (ACE)-inhibitor use"> angiotensin-converting enzyme (ACE)-inhibitor use</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-37">
+            <p>37- 32-year-old man with sickle cell anemia is seen for routine follow-up. He feels well at the present time, but in the past he has had many sickle cell crises, which have resulted in kidney injury. Which of the following renal abnormalities is most likely to be seen in him?</p>
+            <div class="options">
+                <label><input type="radio" name="q37" value="inability to acidify the urine"> inability to acidify the urine</label>
+                <label><input type="radio" name="q37" value="granular casts"> granular casts</label>
+                <label><input type="radio" name="q37" value="papillary necrosis and inability to concentrate the urine"> papillary necrosis and inability to concentrate the urine</label>
+                <label><input type="radio" name="q37" value="pyuria"> pyuria</label>
+                <label><input type="radio" name="q37" value="salt-losing state"> salt-losing state</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-38">
+            <p>38- 63-year-old man with an 8-year history of recurrent severe arthritis in his large toes has an elevated creatinine level. Which of the following mechanisms is the most likely explanation for his renal impairment?</p>
+            <div class="options">
+                <label><input type="radio" name="q38" value="GN"> GN</label>
+                <label><input type="radio" name="q38" value="vascular injury"> vascular injury</label>
+                <label><input type="radio" name="q38" value="distal tubular atrophy"> distal tubular atrophy</label>
+                <label><input type="radio" name="q38" value="renal parenchymal uric acid crystals"> renal parenchymal uric acid crystals</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-39">
+            <p>39- 67-year-old man presents with symptoms of renal colic. Plain x-rays of the abdomen reveal no obvious stone. An intravenous pyelogram (IVP) is ordered to confirm the clinical diagnosis. Which of the following coexisting medical conditions increases the risk of contrast-induced nephropathy?</p>
+            <div class="options">
+                <label><input type="radio" name="q39" value="hyperparathyroidism"> hyperparathyroidism</label>
+                <label><input type="radio" name="q39" value="pyelonephritis"> pyelonephritis</label>
+                <label><input type="radio" name="q39" value="nephrolithiasis"> nephrolithiasis</label>
+                <label><input type="radio" name="q39" value="hypernephroma"> hypernephroma</label>
+                <label><input type="radio" name="q39" value="multiple myeloma"> multiple myeloma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-40">
+            <p>40- 64-year-old man presents with weight gain, shortness of breath, easy bruising, and leg swelling. On examination, his blood pressure is 140/80 mmHg, pulse 100/min, JVP 4 cm, heart sounds normal, and lungs are clear. There is a 3+ pedal and some periorbital edema. Investigations include a normal chest x-ray (CXR), electrocardiogram (ECG) with low voltages, anemia, high urea and creatinine, and 4 g/day of protein in the urine. A renal biopsy, which shows nodular deposits that have an apple-green birefringence under polarized light when stained with Congo red. Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q40" value="amyloidosis"> amyloidosis</label>
+                <label><input type="radio" name="q40" value="multiple myeloma"> multiple myeloma</label>
+                <label><input type="radio" name="q40" value="diabetic nephropathy"> diabetic nephropathy</label>
+                <label><input type="radio" name="q40" value="minimal change disease"> minimal change disease</label>
+                <label><input type="radio" name="q40" value="immunoglobulin A (IgA) nephropathy"> immunoglobulin A (IgA) nephropathy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-41">
+            <p>41- 74-year-old man presents with fatigue, shortness of breath on exertion, and back and rib pain, which is made worse with movement. Investigations reveal he is anemic, calcium, urea, and creatinine are elevated. X-rays reveal multiple lytic lesions in the long bones and ribs, and protein electrophoresis is positive for immunoglobulin G (IgG) paraprotein. Which of the following is the most likely mechanism for the renal injury?</p>
+            <div class="options">
+                <label><input type="radio" name="q41" value="plasma cell infiltrates"> plasma cell infiltrates</label>
+                <label><input type="radio" name="q41" value="tubular damage by light chains"> tubular damage by light chains</label>
+                <label><input type="radio" name="q41" value="glomerular injury"> glomerular injury</label>
+                <label><input type="radio" name="q41" value="vascular injury by light chains"> vascular injury by light chains</label>
+                <label><input type="radio" name="q41" value="uric acid crystals"> uric acid crystals</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-42">
+            <p>42- 69-year-old man has lost a friend to prostate cancer, and would like to be evaluated for the disease. He has no urinary symptoms. Which of the following tests is most likely indicated to screen him for prostate cancer?</p>
+            <div class="options">
+                <label><input type="radio" name="q42" value="prostate ultrasound"> prostate ultrasound</label>
+                <label><input type="radio" name="q42" value="digital rectal examination (DRE)"> digital rectal examination (DRE)</label>
+                <label><input type="radio" name="q42" value="DRE and prostate specific antigen (PSA)"> DRE and prostate specific antigen (PSA)</label>
+                <label><input type="radio" name="q42" value="PSA"> PSA</label>
+                <label><input type="radio" name="q42" value="none of the above"> none of the above</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-43">
+            <p>43- 63-year-old woman has Type II diabetes mellitus, which is well-controlled. Her physical examination is positive for peripheral neuropathy in the feet and nonproliferative retinopathy. A urinalysis is positive for proteinuria. Which of the following treatments is most likely to attenuate the course of renal disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q43" value="calcium channel blockers"> calcium channel blockers</label>
+                <label><input type="radio" name="q43" value="ACE inhibitors"> ACE inhibitors</label>
+                <label><input type="radio" name="q43" value="hepatic hydroxymethylglutaryl-coenzyme A (HMG-CoA) inhibitors"> hepatic hydroxymethylglutaryl-coenzyme A (HMG-CoA) inhibitors</label>
+                <label><input type="radio" name="q43" value="dietary carbohydrate restriction"> dietary carbohydrate restriction</label>
+                <label><input type="radio" name="q43" value="weight reduction"> weight reduction</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-44">
+            <p>44- 32-year-old man has trace proteinuria on dipstick urinalysis. A 24-hour urine collection reveals 380 mg/day of protein excretion in the urine. Which of the following statements concerning this degree of proteinuria is correct?</p>
+            <div class="options">
+                <label><input type="radio" name="q44" value="rarely requires any investigation"> rarely requires any investigation</label>
+                <label><input type="radio" name="q44" value="in systemic diseases, it has no prognostic values"> in systemic diseases, it has no prognostic values</label>
+                <label><input type="radio" name="q44" value="can be caused by fever"> can be caused by fever</label>
+                <label><input type="radio" name="q44" value="is rarely reversible"> is rarely reversible</label>
+                <label><input type="radio" name="q44" value="always caused by tubular defects"> always caused by tubular defects</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-45">
+            <p>45- 56-year-old man is involved in a severe motor vehicle accident. He develops ARF after admission to hospital. One of the possibilities for his ARF is post traumatic renal vein thrombosis. Which of the following findings is most likely to suggest renal vein thrombosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q45" value="white cell casts on urinalysis"> white cell casts on urinalysis</label>
+                <label><input type="radio" name="q45" value="heme-granular casts"> heme-granular casts</label>
+                <label><input type="radio" name="q45" value="heavy proteinuria"> heavy proteinuria</label>
+                <label><input type="radio" name="q45" value="urine supernatant pink and tests positive for heme"> urine supernatant pink and tests positive for heme</label>
+                <label><input type="radio" name="q45" value="specific gravity >1.020"> specific gravity >1.020</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-46">
+            <p>46- 69-year-old woman presents with left flank pain and hematuria. Physical examination suggests a left-sided abdominal mass. Computerized tomography (CT) scan of the abdomen reveals a 5-cm mass in the left kidney. Which of the following laboratory abnormalities might also be present?</p>
+            <div class="options">
+                <label><input type="radio" name="q46" value="polycythemia"> polycythemia</label>
+                <label><input type="radio" name="q46" value="thrombocytopenia"> thrombocytopenia</label>
+                <label><input type="radio" name="q46" value="hypocalcemia"> hypocalcemia</label>
+                <label><input type="radio" name="q46" value="leukocytosis"> leukocytosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-47">
+            <p>47- 78-year-old man is brought to the hospital because of nausea and vomiting. On examination he appears dry, his abdomen is soft, and the JVP is not visible. His laboratory tests reveal hypernatremia and his calculated free water deficit is approximately 3 L. In what part of the normal kidney is most of the water reabsorbed from?</p>
+            <div class="options">
+                <label><input type="radio" name="q47" value="collecting ducts"> collecting ducts</label>
+                <label><input type="radio" name="q47" value="proximal tubule"> proximal tubule</label>
+                <label><input type="radio" name="q47" value="distal tubule"> distal tubule</label>
+                <label><input type="radio" name="q47" value="ascending loop of Henle"> ascending loop of Henle</label>
+                <label><input type="radio" name="q47" value="descending loop of Henle"> descending loop of Henle</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-48">
+            <p>48- 64-year-old man is admitted for hematuria after slipping on an icy pavement. His examination shows hypertension and hypercalcemia. Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q48" value="renal cell carcinoma"> renal cell carcinoma</label>
+                <label><input type="radio" name="q48" value="kidney contusion and laceration"> kidney contusion and laceration</label>
+                <label><input type="radio" name="q48" value="transitional cell carcinoma"> transitional cell carcinoma</label>
+                <label><input type="radio" name="q48" value="renal hamartoma"> renal hamartoma</label>
+                <label><input type="radio" name="q48" value="renal hemangioma"> renal hemangioma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-49">
+            <p>49- 64-year-old man presents with symptoms of malaise, shortness of breath, edema, and no urine output for 24 hours. His past medical history is not significant, and his only medication is daily aspirin. On examination his JVP is 4 cm, heart sounds are normal, lungs are clear, and the abdomen is soft. A Foley catheter is inserted into his bladder for 200 cc of urine, which is sent for urinalysis. His urine output still remains low. Which of the following is the most appropriate initial diagnostic test?</p>
+            <div class="options">
+                <label><input type="radio" name="q49" value="ultrasound"> ultrasound</label>
+                <label><input type="radio" name="q49" value="blood cultures"> blood cultures</label>
+                <label><input type="radio" name="q49" value="urine cultures"> urine cultures</label>
+                <label><input type="radio" name="q49" value="inferior vena cavagram with selective renal venogram"> inferior vena cavagram with selective renal venogram</label>
+                <label><input type="radio" name="q49" value="blood urea nitrogen (BUN)/creatinine ratio"> blood urea nitrogen (BUN)/creatinine ratio</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-50">
+            <p>50- 68-year-old woman develops new symptoms of burning when voiding. She has no fever, chills, or back discomfort. Her urinalysis reveals numerous white cells and bacteria. Which of the following medical comorbidities is most likely to coexist in this patient?</p>
+            <div class="options">
+                <label><input type="radio" name="q50" value="anemia"> anemia</label>
+                <label><input type="radio" name="q50" value="exercise"> exercise</label>
+                <label><input type="radio" name="q50" value="diabetes mellitus"> diabetes mellitus</label>
+                <label><input type="radio" name="q50" value="influenza"> influenza</label>
+                <label><input type="radio" name="q50" value="analgesic drug use"> analgesic drug use</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-51">
+            <p>51- 28-year-old woman presents with a recent episode of coughing up some blood, frequent nosebleeds, and now decreased urine output. A nasal mucosa ulcer was seen on inspection. Her urinalysis is positive for protein and red cells consistent with a GN. The CXR shows two cavitary lesions and her serology is positive for antineutrophil cytoplasmic antibodies (ANCA). Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q51" value="Wegener’s granulomatosis"> Wegener’s granulomatosis</label>
+                <label><input type="radio" name="q51" value="bacterial endocarditis"> bacterial endocarditis</label>
+                <label><input type="radio" name="q51" value="Goodpasture’s syndrome"> Goodpasture’s syndrome</label>
+                <label><input type="radio" name="q51" value="lupus erythematosus"> lupus erythematosus</label>
+                <label><input type="radio" name="q51" value="poststreptococcal disease"> poststreptococcal disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-52">
+            <p>52- 42-year-old woman with rheumatoid arthritis notices leg and facial swelling but no other symptoms. His examination is pertinent for 3+ pedal edema including periorbital edema. A 24-hour urine collection reveals 5 g of proteinuria. Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q52" value="sickle cell disease"> sickle cell disease</label>
+                <label><input type="radio" name="q52" value="medullary sponge kidney"> medullary sponge kidney</label>
+                <label><input type="radio" name="q52" value="radiation nephritis"> radiation nephritis</label>
+                <label><input type="radio" name="q52" value="staphylococcal infection"> staphylococcal infection</label>
+                <label><input type="radio" name="q52" value="amyloid disease"> amyloid disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-53">
+            <p>53- 74-year-old woman develops acute sepsis from pneumonia and is admitted to the intensive care unit because of hypotension. She is started on antibiotics, and her blood pressure is supported with intravenous normal saline. Despite this she remains oliguric and develops ARF. Her urinalysis has heme-granular casts and the urine sodium is 56 mEq/L. Which of the following is the most likely cause of her ARF?</p>
+            <div class="options">
+                <label><input type="radio" name="q53" value="nephrotoxic antibiotics"> nephrotoxic antibiotics</label>
+                <label><input type="radio" name="q53" value="acute infectious GN"> acute infectious GN</label>
+                <label><input type="radio" name="q53" value="acute tubular necrosis (ATN)"> acute tubular necrosis (ATN)</label>
+                <label><input type="radio" name="q53" value="contrast nephropathy"> contrast nephropathy</label>
+                <label><input type="radio" name="q53" value="cholesterol emboli"> cholesterol emboli</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-54">
+            <p>54- 30-year-old man presents with hematuria. His examination is normal except for an elevated blood pressure of 164/94 mm Hg. An ultrasound of the kidneys reveals multiple renal cysts in both kidneys. His father had a similar condition. Which of the following is not associated with this syndrome?</p>
+            <div class="options">
+                <label><input type="radio" name="q54" value="liver cysts"> liver cysts</label>
+                <label><input type="radio" name="q54" value="intracranial aneurysms"> intracranial aneurysms</label>
+                <label><input type="radio" name="q54" value="autosomal dominant inheritance"> autosomal dominant inheritance</label>
+                <label><input type="radio" name="q54" value="rheumatoid arthritis (RA)"> rheumatoid arthritis (RA)</label>
+                <label><input type="radio" name="q54" value="progression to end-stage renal failure"> progression to end-stage renal failure</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-55">
+            <p>55- 15-year-old boy develops renal colic. The stone is not recovered, but urinalysis reveals hexagonal crystals, and a cyanide-nitroprusside test on the urine is positive. Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q55" value="cystinuria"> cystinuria</label>
+                <label><input type="radio" name="q55" value="thalassemia"> thalassemia</label>
+                <label><input type="radio" name="q55" value="hereditary glycinuria"> hereditary glycinuria</label>
+                <label><input type="radio" name="q55" value="primary hyperoxaluria"> primary hyperoxaluria</label>
+                <label><input type="radio" name="q55" value="sarcoidosis"> sarcoidosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-56">
+            <p>56- Fatty cast is often diagnostic of:</p>
+            <div class="options">
+                <label><input type="radio" name="q56" value="Nephrotic syndrome"> Nephrotic syndrome</label>
+                <label><input type="radio" name="q56" value="Acute glomerulonephritis"> Acute glomerulonephritis</label>
+                <label><input type="radio" name="q56" value="End-stage renal disease"> End-stage renal disease</label>
+                <label><input type="radio" name="q56" value="Papillary necrosis"> Papillary necrosis</label>
+                <label><input type="radio" name="q56" value="Hyperlipidemia"> Hyperlipidemia</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-57">
+            <p>57- Which metal is not responsible for development of nephrotic syndrome:</p>
+            <div class="options">
+                <label><input type="radio" name="q57" value="Gold"> Gold</label>
+                <label><input type="radio" name="q57" value="Iron"> Iron</label>
+                <label><input type="radio" name="q57" value="Mercury"> Mercury</label>
+                <label><input type="radio" name="q57" value="Lead"> Lead</label>
+                <label><input type="radio" name="q57" value="Chromium"> Chromium</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-58">
+            <p>58- Which is not a criterion for diagnosis of nephrotic syndrome?</p>
+            <div class="options">
+                <label><input type="radio" name="q58" value="Hypertension"> Hypertension</label>
+                <label><input type="radio" name="q58" value="Massive proteinuria"> Massive proteinuria</label>
+                <label><input type="radio" name="q58" value="Hyperlipidemia"> Hyperlipidemia</label>
+                <label><input type="radio" name="q58" value="Anasarca"> Anasarca</label>
+                <label><input type="radio" name="q58" value="Hypoalbuminemia"> Hypoalbuminemia</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-59">
+            <p>59- Oliguria is:</p>
+            <div class="options">
+                <label><input type="radio" name="q59" value="< 50 mL urine/24 hrs"> < 50 mL urine/24 hrs</label>
+                <label><input type="radio" name="q59" value="< 100 mL urine/24 hrs"> < 100 mL urine/24 hrs</label>
+                <label><input type="radio" name="q59" value="< 200 mL urine/24 hrs"> < 200 mL urine/24 hrs</label>
+                <label><input type="radio" name="q59" value="< 400 mL urine/24 hrs"> < 400 mL urine/24 hrs</label>
+                <label><input type="radio" name="q59" value="< 600 mL urine/24 hrs"> < 600 mL urine/24 hrs</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-60">
+            <p>60- 'Complete' anuria is found in:</p>
+            <div class="options">
+                <label><input type="radio" name="q60" value="Diffuse cortical necrosis"> Diffuse cortical necrosis</label>
+                <label><input type="radio" name="q60" value="Acute gastroenteritis"> Acute gastroenteritis</label>
+                <label><input type="radio" name="q60" value="Acute renal failure"> Acute renal failure</label>
+                <label><input type="radio" name="q60" value="Chronic glomerulonephritis"> Chronic glomerulonephritis</label>
+                <label><input type="radio" name="q60" value="Acute interstitial nephritis"> Acute interstitial nephritis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-61">
+            <p>61- 21-year-old man presents with painless haematuria which he has noticed in the last 3 days. He suffers from type 1 diabetes which is well controlled, but is otherwise fit and healthy. The patient has recently recovered from a mild throat infection. Urine dipstick analysis reveals blood and protein in the urine. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q61" value="Henoch–Schonlein purpura"> Henoch–Schonlein purpura</label>
+                <label><input type="radio" name="q61" value="Benign prostate hypertrophy"> Benign prostate hypertrophy</label>
+                <label><input type="radio" name="q61" value="IgA nephropathy"> IgA nephropathy</label>
+                <label><input type="radio" name="q61" value="Diabetic nephropathy"> Diabetic nephropathy</label>
+                <label><input type="radio" name="q61" value="Urinary tract infection (UTI)"> Urinary tract infection (UTI)</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-62">
+            <p>62- 16-year-old boy presents with a low-grade fever which started 1 week ago. The patient also reports feeling fatigued and indicates pain in his joints. His parents mention that he has been visiting the toilet more often than usual. A urine dipstick shows trace proteins, while a blood test shows raised eosinophils. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q62" value="Acute interstitial nephritis"> Acute interstitial nephritis</label>
+                <label><input type="radio" name="q62" value="Renal failure"> Renal failure</label>
+                <label><input type="radio" name="q62" value="Diabetes mellitus"> Diabetes mellitus</label>
+                <label><input type="radio" name="q62" value="UTI"> UTI</label>
+                <label><input type="radio" name="q62" value="Reactive arthritis"> Reactive arthritis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-63">
+            <p>63- 58-year-old African man presents with pitting oedema of his ankles. He suffers from recently diagnosed hypertension, but is otherwise healthy. Blood results show low albumin and a urine dipstick is positive for protein. The most appropriate initial treatment is:</p>
+            <div class="options">
+                <label><input type="radio" name="q63" value="High protein diet"> High protein diet</label>
+                <label><input type="radio" name="q63" value="Diuretics"> Diuretics</label>
+                <label><input type="radio" name="q63" value="Prophylactic anticoagulation"> Prophylactic anticoagulation</label>
+                <label><input type="radio" name="q63" value="ACE inhibitor"> ACE inhibitor</label>
+                <label><input type="radio" name="q63" value="Bed rest"> Bed rest</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-64">
+            <p>64- 33-year-old woman presents to accident and emergency with severe right flank pain. The pain started 3 hours ago and is not constant, occasionally moving towards her right iliac fossa. The patient also feels nauseous and has a low-grade fever. The most appropriate investigation is:</p>
+            <div class="options">
+                <label><input type="radio" name="q64" value="Abdominal x-ray"> Abdominal x-ray</label>
+                <label><input type="radio" name="q64" value="Magnetic resonance imaging (MRI) scan"> Magnetic resonance imaging (MRI) scan</label>
+                <label><input type="radio" name="q64" value="Intravenous urography"> Intravenous urography</label>
+                <label><input type="radio" name="q64" value="Computed tomography (CT) scan"> Computed tomography (CT) scan</label>
+                <label><input type="radio" name="q64" value="Abdominal ultrasound (US) scan"> Abdominal ultrasound (US) scan</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-65">
+            <p>65- 42-year-old diabetic Asian male complains of dysuria, increased urinary frequency and general malaise for the past six months. In the last few days, he has noticed blood in the urine. Examination of the urine shows the presence of neutrophils with no organisms detected on urine culture. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q65" value="Tuberculosis"> Tuberculosis</label>
+                <label><input type="radio" name="q65" value="Renal cell cancer"> Renal cell cancer</label>
+                <label><input type="radio" name="q65" value="Diabetic nephropathy"> Diabetic nephropathy</label>
+                <label><input type="radio" name="q65" value="Bladder cancer"> Bladder cancer</label>
+                <label><input type="radio" name="q65" value="Nephritic syndrome"> Nephritic syndrome</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-66">
+            <p>66- 17-year-old patient is referred by his GP after presenting with periorbital oedema. The patient noticed the oedematous eyes 3 days ago, but reports feeling unwell since a throat infection 3 weeks ago with nausea and vomiting in the last week. A urine dipstick is positive for protein and blood while serum creatinine and urea are mildly deranged. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q66" value="Nephrotic syndrome"> Nephrotic syndrome</label>
+                <label><input type="radio" name="q66" value="Nephritic syndrome"> Nephritic syndrome</label>
+                <label><input type="radio" name="q66" value="Renal failure"> Renal failure</label>
+                <label><input type="radio" name="q66" value="Glomerulonephritis"> Glomerulonephritis</label>
+                <label><input type="radio" name="q66" value="Von Grawitz tumour"> Von Grawitz tumour</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-67">
+            <p>67- 28-year-old woman patient who is 13 weeks pregnant presents for an antenatal clinic appointment. The patient feels embarrassed when asked to provide a urine sample and produces enough for a urine dipstick test only which is positive for leukocytes and nitrites. The patient denies any symptoms. The most appropriate treatment is:</p>
+            <div class="options">
+                <label><input type="radio" name="q67" value="Trimethoprim"> Trimethoprim</label>
+                <label><input type="radio" name="q67" value="Quinolone"> Quinolone</label>
+                <label><input type="radio" name="q67" value="Tetracycline"> Tetracycline</label>
+                <label><input type="radio" name="q67" value="Cephalexin"> Cephalexin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-68">
+            <p>68- Which one of the following statements is true regarding autosomal recessive polycystic Kidney disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q68" value="Onset is typically in the third decade"> Onset is typically in the third decade</label>
+                <label><input type="radio" name="q68" value="Liver involvement is rare"> Liver involvement is rare</label>
+                <label><input type="radio" name="q68" value="Is due to a defect on chromosome 16"> Is due to a defect on chromosome 16</label>
+                <label><input type="radio" name="q68" value="More common than autosomal dominant polycystic kidney disease"> More common than autosomal dominant polycystic kidney disease</label>
+                <label><input type="radio" name="q68" value="May be diagnosed on prenatal ultrasound"> May be diagnosed on prenatal ultrasound</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-69">
+            <p>69- 58-year-old man presents with breathlessness, he reports feeling unwell over the last three months with nausea, vomiting and difficulty breathing. You notice his ankles are swollen and he has bruises on his arms. The patient mentions he has not been urinating as often as normal. The most appropriate investigation is:</p>
+            <div class="options">
+                <label><input type="radio" name="q69" value="Urine microscopy"> Urine microscopy</label>
+                <label><input type="radio" name="q69" value="Renal ultrasound"> Renal ultrasound</label>
+                <label><input type="radio" name="q69" value="Serum electrolytes, urea and creatinine"> Serum electrolytes, urea and creatinine</label>
+                <label><input type="radio" name="q69" value="Renal biopsy"> Renal biopsy</label>
+                <label><input type="radio" name="q69" value="Chest x-ray"> Chest x-ray</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-70">
+            <p>70- 24-year-old man presents with a four-month history of abdominal pain which has been getting worse. The patient describes the pain as generalised, dull in character and does not radiate but often occurs alongside loin pain. An irregular mass is palpable in both flanks and a mid-systolic click can be auscultated. The most appropriate investigation is:</p>
+            <div class="options">
+                <label><input type="radio" name="q70" value="MRI scan"> MRI scan</label>
+                <label><input type="radio" name="q70" value="Abdominal US scan"> Abdominal US scan</label>
+                <label><input type="radio" name="q70" value="Excretion urography"> Excretion urography</label>
+                <label><input type="radio" name="q70" value="CT scan"> CT scan</label>
+                <label><input type="radio" name="q70" value="Abdominal x-ray"> Abdominal x-ray</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-71">
+            <p>71- 55-year-old woman is seen in clinic, she has a ten-year history of type 2 diabetes treated with glibenclamide. Her blood pressure is 148/93 with new onset proteinuria, her serum results show elevated lipid levels, glycated haemoglobin of 5.5 percent and fasting glucose of 6.0 mmol/L. The most appropriate management is:</p>
+            <div class="options">
+                <label><input type="radio" name="q71" value="Increase oral hypoglycaemic dosage"> Increase oral hypoglycaemic dosage</label>
+                <label><input type="radio" name="q71" value="ACE II antagonists"> ACE II antagonists</label>
+                <label><input type="radio" name="q71" value="Start cholesterol lowering therapy"> Start cholesterol lowering therapy</label>
+                <label><input type="radio" name="q71" value="Start ACE inhibitors"> Start ACE inhibitors</label>
+                <label><input type="radio" name="q71" value="Start renal dialysis"> Start renal dialysis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-72">
+            <p>72- 52-year-old man complains of a 3-week history of malaise and shortness of breath. He has lost weight in the last few months but attributes this to a loss of appetite possibly due to stress at work. On examination, he has a palpable mass in the right lumbar region. He has no urinary symptoms. However, the urine dipstick detected blood. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q72" value="Renal abscess"> Renal abscess</label>
+                <label><input type="radio" name="q72" value="Renal cyst"> Renal cyst</label>
+                <label><input type="radio" name="q72" value="Renal carcinoma"> Renal carcinoma</label>
+                <label><input type="radio" name="q72" value="Adrenal tumour"> Adrenal tumour</label>
+                <label><input type="radio" name="q72" value="Pyelonephritis"> Pyelonephritis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-73">
+            <p>73- 64-year-old man is undergoing treatment for polycythaemia vera with chemotherapy, he has no other medical problems. Shortly after starting treatment, the patient becomes lethargic, feels unwell and suffers weight loss. He attributes this to the chemotherapy. After 2 weeks, the patient becomes oliguric, complains of bilateral flank pain and becomes oedematous. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q73" value="Analgesic nephropathy"> Analgesic nephropathy</label>
+                <label><input type="radio" name="q73" value="Renal infarction"> Renal infarction</label>
+                <label><input type="radio" name="q73" value="Hyperuricemic nephropathy"> Hyperuricemic nephropathy</label>
+                <label><input type="radio" name="q73" value="Acute tubulointerstitial nephritis"> Acute tubulointerstitial nephritis</label>
+                <label><input type="radio" name="q73" value="Chronic renal failure"> Chronic renal failure</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-74">
+            <p>74- 67-year-old diabetic female is brought into accident and emergency following a collapse at her home. She was found by her daughter who said she saw the patient going to the toilet and then hearing her collapse. The patient did not lose consciousness and appears well. Her supine blood pressure is 100/70 and standing 115/79. Urine dipstick is positive for glucose, nitrates, leukocytes and haematuria. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q74" value="Diabetic ketoacidosis"> Diabetic ketoacidosis</label>
+                <label><input type="radio" name="q74" value="UTI"> UTI</label>
+                <label><input type="radio" name="q74" value="Orthostatic hypotension"> Orthostatic hypotension</label>
+                <label><input type="radio" name="q74" value="Diabetic nephropathy"> Diabetic nephropathy</label>
+                <label><input type="radio" name="q74" value="Hypoglycaemia"> Hypoglycaemia</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-75">
+            <p>75- 18-year-old man presents with general malaise and lethargy for the last 2 weeks, he denies any weight loss and has maintained a good appetite. On examination, there are no abnormalities except for sacral oedema and a polyphonic wheeze. Urine dipstick is positive for protein only and blood pressure is 130/80. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q75" value="Nephritic syndrome"> Nephritic syndrome</label>
+                <label><input type="radio" name="q75" value="Nephrotic syndrome"> Nephrotic syndrome</label>
+                <label><input type="radio" name="q75" value="Goodpasture’s disease"> Goodpasture’s disease</label>
+                <label><input type="radio" name="q75" value="Thin-basement membrane nephropathy"> Thin-basement membrane nephropathy</label>
+                <label><input type="radio" name="q75" value="Minimal change glomerulonephritis"> Minimal change glomerulonephritis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-76">
+            <p>76- 6-year-old has a sore throat and has been given antibiotics. Three weeks later, he represents feeling feverish with nausea, vomiting and tea-coloured urine. Urine dipstick confirms haematuria and protein. Blood pressure is 100/60 mmHg. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q76" value="Nephritic syndrome"> Nephritic syndrome</label>
+                <label><input type="radio" name="q76" value="UTI"> UTI</label>
+                <label><input type="radio" name="q76" value="Acute tubulointerstitial nephritis"> Acute tubulointerstitial nephritis</label>
+                <label><input type="radio" name="q76" value="Minimal change glomerulonephritis"> Minimal change glomerulonephritis</label>
+                <label><input type="radio" name="q76" value="Post streptococcal glomerulonephritis"> Post streptococcal glomerulonephritis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-77">
+            <p>77- 21-year-old man complains his urine has turned a faint red in the last week. He denies any significant changes in his diet or lifestyle and has no other medical problems except for sensorineural deafness diagnosed when he was young. On examination, you notice retinal flecks and urine dipstick confirms protein and blood. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q77" value="Alport’s syndrome"> Alport’s syndrome</label>
+                <label><input type="radio" name="q77" value="Benign familial haematuria"> Benign familial haematuria</label>
+                <label><input type="radio" name="q77" value="Wolfram syndrome"> Wolfram syndrome</label>
+                <label><input type="radio" name="q77" value="IgA nephropathy"> IgA nephropathy</label>
+                <label><input type="radio" name="q77" value="Down’s syndrome"> Down’s syndrome</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-78">
+            <p>78- 65-year-old overweight man presents with a 2-week history of haematuria. The patient denies any other symptoms and his blood pressure is 128/83 mmHg. He suffers from no other medical problems but admits to being a chronic smoker since the age of 16. He has tried to lose weight using herbal remedies for three years, but he has only noticed significant weight loss in the last week despite stopping the remedies months ago. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q78" value="Chinese herb nephropathy"> Chinese herb nephropathy</label>
+                <label><input type="radio" name="q78" value="Bladder cancer"> Bladder cancer</label>
+                <label><input type="radio" name="q78" value="Schistosomiasis"> Schistosomiasis</label>
+                <label><input type="radio" name="q78" value="Acute tubulointerstitial nephritis"> Acute tubulointerstitial nephritis</label>
+                <label><input type="radio" name="q78" value="Renal cancer"> Renal cancer</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-79">
+            <p>79- 53-year-old man with HIV suffers a ruptured aortic aneurysm and is rushed into theatre, he undergoes a successful operation and is recovering on the wards in a stable condition. One day after the operation, he becomes oliguric with mildly elevated urea and creatinine. After 1 week, he becomes polyuric with a GFR of 30. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q79" value="Haemolytic–uraemic syndrome"> Haemolytic–uraemic syndrome</label>
+                <label><input type="radio" name="q79" value="Acute tubular necrosis"> Acute tubular necrosis</label>
+                <label><input type="radio" name="q79" value="SIADH"> SIADH</label>
+                <label><input type="radio" name="q79" value="HIV nephropathy"> HIV nephropathy</label>
+                <label><input type="radio" name="q79" value="Acute renal failure"> Acute renal failure</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-80">
+            <p>80- 64-year-old woman with type 1 diabetes presents to clinic with several months of sinus problem and a 4-day history of oliguria. Her blood pressure is 137/80, serum results show mildly elevated urea and creatinine, absence of anti-GBM antibodies, while a C-ANCA assay is positive. Red blood cell (RBC) casts are present in the urine and her renal biopsy reveals glomerular crescents. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q80" value="Post-streptococcal glomerulonephritis"> Post-streptococcal glomerulonephritis</label>
+                <label><input type="radio" name="q80" value="Goodpasture’s syndrome"> Goodpasture’s syndrome</label>
+                <label><input type="radio" name="q80" value="Minimal change glomerulonephritis"> Minimal change glomerulonephritis</label>
+                <label><input type="radio" name="q80" value="Rapidly progressive glomerulonephritis"> Rapidly progressive glomerulonephritis</label>
+                <label><input type="radio" name="q80" value="Wegener’s granulomatosis"> Wegener’s granulomatosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-81">
+            <p>81- 68-year-old obese Asian man is seen in the hypertension clinic. His blood pressure is 151/93 and he suffers from poorly controlled type 2 diabetes. Blood results demonstrate elevated serum urea and creatinine. An ultrasound scan shows asymmetry between the two kidneys and on examination audible abdominal bruits are auscultated. Urine dipstick did not detect any blood or protein. The best investigation is:</p>
+            <div class="options">
+                <label><input type="radio" name="q81" value="CT angiography"> CT angiography</label>
+                <label><input type="radio" name="q81" value="Doppler ultrasonography"> Doppler ultrasonography</label>
+                <label><input type="radio" name="q81" value="Abdominal x-ray"> Abdominal x-ray</label>
+                <label><input type="radio" name="q81" value="Renal arteriography"> Renal arteriography</label>
+                <label><input type="radio" name="q81" value="Renal biopsy"> Renal biopsy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-82">
+            <p>82- 19-year-old man is recently diagnosed with type 1 diabetes and attends your clinic to ask about possible complications in the future. He mentions an uncle who has end-stage renal disease due to poorly controlled diabetes and specifically enquires about testing for early signs of renal impairment. The most appropriate investigation for initial problem is:</p>
+            <div class="options">
+                <label><input type="radio" name="q82" value="Blood pressure"> Blood pressure</label>
+                <label><input type="radio" name="q82" value="Microalbuminuria"> Microalbuminuria</label>
+                <label><input type="radio" name="q82" value="Serum creatinine"> Serum creatinine</label>
+                <label><input type="radio" name="q82" value="Serum electrolytes"> Serum electrolytes</label>
+                <label><input type="radio" name="q82" value="Urine dipstick for glucose"> Urine dipstick for glucose</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-83">
+            <p>83- 21-year-old man presents with lethargy over the last week, he has periorbital oedema and proteinuria. The patient mentions he has been to hospital a number of times in the past due to the same symptoms as well as mild eczema. Light microscopy of a renal biopsy showed normal morphology. Electron microscopy of the renal biopsy reveals the diffuse effacement of the epithelial podocytes. The most appropriate treatment is:</p>
+            <div class="options">
+                <label><input type="radio" name="q83" value="Cyclosporin"> Cyclosporin</label>
+                <label><input type="radio" name="q83" value="No treatment"> No treatment</label>
+                <label><input type="radio" name="q83" value="Probenecid"> Probenecid</label>
+                <label><input type="radio" name="q83" value="Renal transplant"> Renal transplant</label>
+                <label><input type="radio" name="q83" value="Oral prednisone"> Oral prednisone</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-84">
+            <p>84- 66-year-old woman with poorly controlled type 2 diabetes presents to accident and emergency with a 2-day history of severe pain in the right flank, nausea and fevers that come and go. On examination, the patient appears unwell, sweaty and has visible rigors with a temperature of 38°C. The patient denies any recent travel. Urine dipstick is positive for protein, blood, leukocytes and nitrates. A CT scan of the abdomen reveals gas in the renal parenchyma area. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q84" value="Renal stones"> Renal stones</label>
+                <label><input type="radio" name="q84" value="Renal infarction"> Renal infarction</label>
+                <label><input type="radio" name="q84" value="Diabetic nephropathy"> Diabetic nephropathy</label>
+                <label><input type="radio" name="q84" value="Renal TB"> Renal TB</label>
+                <label><input type="radio" name="q84" value="Pyelonephritis"> Pyelonephritis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-85">
+            <p>85- Which one of the following is least associated with focal segmental glomerulosclerosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q85" value="Alport's syndrome"> Alport's syndrome</label>
+                <label><input type="radio" name="q85" value="Heroin"> Heroin</label>
+                <label><input type="radio" name="q85" value="Sickle-cell anaemia"> Sickle-cell anaemia</label>
+                <label><input type="radio" name="q85" value="Bleomycin"> Bleomycin</label>
+                <label><input type="radio" name="q85" value="HIV infection"> HIV infection</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-86">
+            <p>86. Recognized feature of minimal change glomerular disease is:</p>
+            <div class="options">
+                <label><input type="radio" name="q86" value="Hematuria"> Hematuria</label>
+                <label><input type="radio" name="q86" value="Hypertension"> Hypertension</label>
+                <label><input type="radio" name="q86" value="Absence of edema"> Absence of edema</label>
+                <label><input type="radio" name="q86" value="Response to corticosteroid"> Response to corticosteroid</label>
+                <label><input type="radio" name="q86" value="Decreased complement"> Decreased complement</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-87">
+            <p>87. Which of the following does not produce red urine:</p>
+            <div class="options">
+                <label><input type="radio" name="q87" value="Hemoglobinuria"> Hemoglobinuria</label>
+                <label><input type="radio" name="q87" value="Myoglobinuria"> Myoglobinuria</label>
+                <label><input type="radio" name="q87" value="Microscopic hematuria"> Microscopic hematuria</label>
+                <label><input type="radio" name="q87" value="Acute intermittent porphyria"> Acute intermittent porphyria</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-88">
+            <p>88. Absolute indication for dialysis:</p>
+            <div class="options">
+                <label><input type="radio" name="q88" value="Serum K + level > 6 mEq/L"> Serum K + level > 6 mEq/L</label>
+                <label><input type="radio" name="q88" value="Serum urea level > 200 mg/dL"> Serum urea level > 200 mg/dL</label>
+                <label><input type="radio" name="q88" value="Serum creatinine level > 4 mg/dL"> Serum creatinine level > 4 mg/dL</label>
+                <label><input type="radio" name="q88" value="Clinical evidence of pericarditis"> Clinical evidence of pericarditis</label>
+                <label><input type="radio" name="q88" value="HC03 level < 10 mEq/dL"> HC03 level < 10 mEq/dL</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-89">
+            <p>89. All are recognized causes of chronic renal failure (CRF) EXCEPT:</p>
+            <div class="options">
+                <label><input type="radio" name="q89" value="Snake bite"> Snake bite</label>
+                <label><input type="radio" name="q89" value="Malignant hypertension"> Malignant hypertension</label>
+                <label><input type="radio" name="q89" value="Diabetes mellitus"> Diabetes mellitus</label>
+                <label><input type="radio" name="q89" value="Obstructive uropathy"> Obstructive uropathy</label>
+                <label><input type="radio" name="q89" value="Analgesic abuse"> Analgesic abuse</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-90">
+            <p>90. Broad casts are found in:</p>
+            <div class="options">
+                <label><input type="radio" name="q90" value="Acute glomerulonephritis"> Acute glomerulonephritis</label>
+                <label><input type="radio" name="q90" value="Urinary tract infection"> Urinary tract infection</label>
+                <label><input type="radio" name="q90" value="Analgesic nephropathy"> Analgesic nephropathy</label>
+                <label><input type="radio" name="q90" value="Chronic renal failure (CRF)"> Chronic renal failure (CRF)</label>
+                <label><input type="radio" name="q90" value="Obstructive uropathy"> Obstructive uropathy</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-91">
+            <p>91- 50-year-old man with progressive renal failure over 4 years presents with recent onset of numbness of his feet and hands. He is on a dietary regimen of water and salt restriction. Examination shows decreased sensation to pinprick and vibration stimuli below the knee and in the hands, and absence of ankle reflexes. Blood studies show: Hematocrit 35%, Sodium 140 mEq/L, Potassium 5.0 mEq/L, Urea nitrogen 98 mg/dL, Creatinine 8.5 mg/dL. Which of the following is the most appropriate next step in management?</p>
+            <div class="options">
+                <label><input type="radio" name="q91" value="Administration of bicarbonate supplements"> Administration of bicarbonate supplements</label>
+                <label><input type="radio" name="q91" value="Arterial blood gas analysis"> Arterial blood gas analysis</label>
+                <label><input type="radio" name="q91" value="Initiation of dialysis"> Initiation of dialysis</label>
+                <label><input type="radio" name="q91" value="Treatment with recombinant erythropoietin"> Treatment with recombinant erythropoietin</label>
+                <label><input type="radio" name="q91" value="Treatment with vitamin B 12"> Treatment with vitamin B 12</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-92">
+            <p>92- 78-year-old man is admitted to the hospital because of the acute onset of dysuria, frequency profound malaise, and shaking chills. His temperature is 39.8°C, blood pressure is 1 05/65 mm Hg, pulse is 1 20/min, and respirations are 28/min. Examination reveals pronounced tenderness in the right costovertebral angle. Urinalysis shows: Red blood cells 10/hpf, White blood cells 100/hpf, Protein 2+, Casts None. A urine sample is sent for cultures and results are pending. Which of the following is the most appropriate next step in management?</p>
+            <div class="options">
+                <label><input type="radio" name="q92" value="Single-dose administration of cephalexin"> Single-dose administration of cephalexin</label>
+                <label><input type="radio" name="q92" value="Single-dose administration of trimethoprim sulfamethoxazole"> Single-dose administration of trimethoprim sulfamethoxazole</label>
+                <label><input type="radio" name="q92" value="Treatment with intramuscular ceftriaxone plus oral doxycycline"> Treatment with intramuscular ceftriaxone plus oral doxycycline</label>
+                <label><input type="radio" name="q92" value="Treatment with IV ampicillin and gentamicin"> Treatment with IV ampicillin and gentamicin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-93">
+            <p>93- 72 year-old man who was recently diagnosed with lymphoma has been undergoing chemotherapy for the past 3 weeks. He now develops acute renal failure. His laboratory studies reveal a creatinine of 4 mg/dL, urea nitrogen of 15 mg/dL, and uric acid level of 20 mg/dL. Which of the following would most likely have prevented this patient's acute renal failure?</p>
+            <div class="options">
+                <label><input type="radio" name="q93" value="Allopurinol"> Allopurinol</label>
+                <label><input type="radio" name="q93" value="Diphenhydramine"> Diphenhydramine</label>
+                <label><input type="radio" name="q93" value="Furosemide"> Furosemide</label>
+                <label><input type="radio" name="q93" value="N-acetylcysteine"> N-acetylcysteine</label>
+                <label><input type="radio" name="q93" value="Nifedipine"> Nifedipine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-94">
+            <p>94- 12 year-old boy presents with acute onset of morbilliform rash, fever, malaise, and oliguria. These manifestations began 1 week after starting treatment with ampicillin for streptococcal pharyngitis. His temperature is 38.8°C, blood pressure is 115/75 mm Hg, pulse is 95/min, and respirations are 16/mm. Urine analysis shows microhematuria, leukocyturia with numerous eosinophils, and occasional white blood cell casts. Proteinuria is absent. Blood studies show elevated antistreptolysin titers and moderate eosinophilia. BUN is 42 mg/dL, and serum creatinine is 2.5 mg/dL. Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q94" value="Acute interstitial nephritis"> Acute interstitial nephritis</label>
+                <label><input type="radio" name="q94" value="Acute pyelonephritis"> Acute pyelonephritis</label>
+                <label><input type="radio" name="q94" value="Acute tubular necrosis"> Acute tubular necrosis</label>
+                <label><input type="radio" name="q94" value="Post-streptococcal glomerulonephritis"> Post-streptococcal glomerulonephritis</label>
+                <label><input type="radio" name="q94" value="Vasculitis"> Vasculitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-95">
+            <p>95- 56-year-old woman with a long history of painful osteoarthritis of the hip and lower back comes to medical attention because of polyuria for 3 months. She denies any previous urinary tract infection or renal disease. Her blood pressure is 135/80 mm Hg. Urine dipstick test shows hematuria and mild proteinuria. Blood studies reveal mild microcytic anemia, hyperkalemia, and normal uric acid levels. Ultrasonography shows kidneys of normal size. Intravenous pyelography (IVP) demonstrates the presence of characteristic "ring shadow" defects at the tips of renal papillae. Which of the following is the most likely cause of this condition?</p>
+            <div class="options">
+                <label><input type="radio" name="q95" value="Analgesic nephropathy"> Analgesic nephropathy</label>
+                <label><input type="radio" name="q95" value="Lead exposure"> Lead exposure</label>
+                <label><input type="radio" name="q95" value="Multiple myeloma"> Multiple myeloma</label>
+                <label><input type="radio" name="q95" value="Obstructive uropathy"> Obstructive uropathy</label>
+                <label><input type="radio" name="q95" value="Polycystic kidney disease"> Polycystic kidney disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-96">
+            <p>96- 45-year-old woman with systemic lupus erythematosus (SLE) comes for a routine checkup. Her condition has been stable for several years, and she currently is not taking any medication. Blood chemistry studies and hematologic parameters are remarkable for blood urea nitrogen (BUN) of 23 mg/dL, a creatinine of 1.6 mg/dL, and a mild normocytic anemia. The erythrocyte sedimentation rate is 18 mm/hr. Urine analysis shows microhematuria and mild proteinuria. Which of the following is the most appropriate next step in management?</p>
+            <div class="options">
+                <label><input type="radio" name="q96" value="Renal biopsy"> Renal biopsy</label>
+                <label><input type="radio" name="q96" value="Repeat urine analysis at next routine examination"> Repeat urine analysis at next routine examination</label>
+                <label><input type="radio" name="q96" value="Sequential serum complement and ANA studies"> Sequential serum complement and ANA studies</label>
+                <label><input type="radio" name="q96" value="Treatment with corticosteroids"> Treatment with corticosteroids</label>
+                <label><input type="radio" name="q96" value="Treatment with cyclophosphamide"> Treatment with cyclophosphamide</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-97">
+            <p>97- 33-year-old male receiving regular hemodialysis is noted to have plasma potassium of 6.9 mEq/L 'before a dialysis session. Although normally his potassium is less than 5.5 mEq/L. Which food combination from the dietary history would be most likely to cause the high potassium concentration?</p>
+            <div class="options">
+                <label><input type="radio" name="q97" value="Cereal, toast, biscuits."> Cereal, toast, biscuits.</label>
+                <label><input type="radio" name="q97" value="Filter coffee, tea, boiled potatoes."> Filter coffee, tea, boiled potatoes.</label>
+                <label><input type="radio" name="q97" value="Milk, butter, plain yoghurt"> Milk, butter, plain yoghurt</label>
+                <label><input type="radio" name="q97" value="Milk, ham, chicken."> Milk, ham, chicken.</label>
+                <label><input type="radio" name="q97" value="Tomato, potato crisps; banana."> Tomato, potato crisps; banana.</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-98">
+            <p>98- 81-year-old man was admitted with renal failure due to benign prostatic hypertrophy. His bladder was drained with a urethral catheter followed by a diuresis of > 3L per day. After two days he became progressively drowsy. What is the most likely cause for his reduced level of consciousness?</p>
+            <div class="options">
+                <label><input type="radio" name="q98" value="hyperglycemia"> hyperglycemia</label>
+                <label><input type="radio" name="q98" value="hypocalcaemia"> hypocalcaemia</label>
+                <label><input type="radio" name="q98" value="hypomagnesaemia"> hypomagnesaemia</label>
+                <label><input type="radio" name="q98" value="hyponatremia"> hyponatremia</label>
+                <label><input type="radio" name="q98" value="metabolic acidosis"> metabolic acidosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-99">
+            <p>99- 25 year old man presented with renal failure; creatinine was 8.5 mg/dl. You are in a dilemma whether it is acute or chronic renal failure. Which of the following can help?</p>
+            <div class="options">
+                <label><input type="radio" name="q99" value="An increased urinary Na excretion"> An increased urinary Na excretion</label>
+                <label><input type="radio" name="q99" value="Hyperkalemia"> Hyperkalemia</label>
+                <label><input type="radio" name="q99" value="Hypophosphatemia"> Hypophosphatemia</label>
+                <label><input type="radio" name="q99" value="Left ventricular hypertrophy on the ECG"> Left ventricular hypertrophy on the ECG</label>
+                <label><input type="radio" name="q99" value="Renal size on ultrasound scan"> Renal size on ultrasound scan</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-100">
+            <p>100- 62-year-old man with a longstanding history of hypertension is seen in the outpatient clinic. Investigations showed creatinine 2.8 mg % and urine analysis show blood ++ and protein 1.8 gm/L. Ultrasound scan of kidneys both kidneys were 8.5 Cm. What is the best investigation to diagnose the cause of his renal impairment?</p>
+            <div class="options">
+                <label><input type="radio" name="q100" value="Intravenous urogram (IVU)"> Intravenous urogram (IVU)</label>
+                <label><input type="radio" name="q100" value="Isotope renogram"> Isotope renogram</label>
+                <label><input type="radio" name="q100" value="Renal biopsy"> Renal biopsy</label>
+                <label><input type="radio" name="q100" value="MR angiography"> MR angiography</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-101">
+            <p>101- 63-year-old woman noted to be hypertensive. She has a past history of hip osteoarthritis for which she has taken regular paracetamol. On examination she is obese with a BMI of 35, has a blood pressure of 180/100 mmHg and glycosuria is noted. Her Investigations show:<br>
+                Fasting plasma glucose 329 mg/dl<br>
+                Serum urea  60 mg/dl<br>
+                Serum creatinine 1.5 mg/ dl<br>
+                24 hour urine protein concentration 1.8 mg / dl<br>
+                Normal ultrasonic: appearances of both kidneys <br>
+                Which of the following is the most likely diagnosis?
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q101" value="Analgesic nephropathy"> Analgesic nephropathy</label>
+                <label><input type="radio" name="q101" value="Chronic glomerulonephritis"> Chronic glomerulonephritis</label>
+                <label><input type="radio" name="q101" value="Diabetic nephropathy"> Diabetic nephropathy</label>
+                <label><input type="radio" name="q101" value="Hypertensive nephropathy"> Hypertensive nephropathy</label>
+                <label><input type="radio" name="q101" value="Ischaemic nephropathy"> Ischaemic nephropathy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-102">
+            <p>102- 25-year-old man developed bilateral loin pain and frank hematuria. His symptoms had started 24 hours after developing a sore throat. His blood pressure was 140/90 mmHg. Urinalysis was positive for blood ( 4+) and protein (2+ ). What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q102" value="IgA nephropathy"> IgA nephropathy</label>
+                <label><input type="radio" name="q102" value="Microscopic polyangiitis"> Microscopic polyangiitis</label>
+                <label><input type="radio" name="q102" value="Nephrolithiasis"> Nephrolithiasis</label>
+                <label><input type="radio" name="q102" value="Post-streptococcal glomerulonephritis"> Post-streptococcal glomerulonephritis</label>
+                <label><input type="radio" name="q102" value="Septicemia"> Septicemia</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-103">
+            <p>103- 72-year-old male presented with depression after the death of his wife. His notes also reveal that he has a two-year history of urinary hesitancy and poor stream. His GP prescribed him some medication and the following day he developed acute urinary retention. Which of the following drugs is most likely to have precipitated the urinary retention?</p>
+            <div class="options">
+                <label><input type="radio" name="q103" value="Amitriptyline"> Amitriptyline</label>
+                <label><input type="radio" name="q103" value="Diazepam"> Diazepam</label>
+                <label><input type="radio" name="q103" value="Fluoxetine"> Fluoxetine</label>
+                <label><input type="radio" name="q103" value="Venlafaxine"> Venlafaxine</label>
+                <label><input type="radio" name="q103" value="Zopiclone"> Zopiclone</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-104">
+            <p>104- 45-year-old man presents with a long-standing history of hypertension. Investigations show a urea of 7.5 mg/ dl and a Creatinine of 1.9 mg/ dl. You suspect acute glomerulonephritis. Which one of the following would suggest that diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q104" value="24 hour urinary protein excretion of 0.8g"> 24 hour urinary protein excretion of 0.8g</label>
+                <label><input type="radio" name="q104" value="Dyslipidemia"> Dyslipidemia</label>
+                <label><input type="radio" name="q104" value="RBC casts in urinary sediment"> RBC casts in urinary sediment</label>
+                <label><input type="radio" name="q104" value="Shrunken glomeruli on renal biopsy"> Shrunken glomeruli on renal biopsy</label>
+                <label><input type="radio" name="q104" value="Unilaterally smaller kidney"> Unilaterally smaller kidney</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-105">
+            <p>105- 46-year-old woman develops nephrotic syndrome and is awaiting further tests to establish the underlying aetiology. Corticosteroids were effective in reversing her condition. Which of the following is' the most likely etiology?</p>
+            <div class="options">
+                <label><input type="radio" name="q105" value="Membranous nephropathy"> Membranous nephropathy</label>
+                <label><input type="radio" name="q105" value="Mesangial lgA disease"> Mesangial lgA disease</label>
+                <label><input type="radio" name="q105" value="Minimal change disease"> Minimal change disease</label>
+                <label><input type="radio" name="q105" value="Primary amyloidosis"> Primary amyloidosis</label>
+                <label><input type="radio" name="q105" value="Renal vein thrombosis"> Renal vein thrombosis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-106">
+            <p>106- 30-year-old male presents with edema and proteinuria. On examination his blood pressure 130/85. Ultrasound of renal tract: normal right kidney, absent Lt Kidney. Lab investigations revealed:<br>
+                Creatinine 1.2 mg/dl<br>
+                Albumin 25 g/L<br>
+                Urinalysis No blood<br>
+                Protein ++++<br>
+                Urinary protein excretion 7g/24hr<br>
+                Which is the most appropriate course of action for this patient?
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q106" value="Albumin transfusion"> Albumin transfusion</label>
+                <label><input type="radio" name="q106" value="Angiotensin converting enzyme inhibitor therapy"> Angiotensin converting enzyme inhibitor therapy</label>
+                <label><input type="radio" name="q106" value="High protein diet"> High protein diet</label>
+                <label><input type="radio" name="q106" value="Renal biopsy"> Renal biopsy</label>
+                <label><input type="radio" name="q106" value="Trial of steroid therapy"> Trial of steroid therapy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-107">
+            <p>107- 68-year-old male diagnosed with nephrotic syndrome receives steroid therapy without benefit. His investigations show an albumin of 20 g/L, Total cholesterol of 320 mg/dl, dipstick urine analysis reveals +++ protein and a renal biopsy shows focal segmental glomerulosclerosis. Which one of the following is most likely to preserve renal function?</p>
+            <div class="options">
+                <label><input type="radio" name="q107" value="Dietary salt restriction"> Dietary salt restriction</label>
+                <label><input type="radio" name="q107" value="Low dietary protein intake"> Low dietary protein intake</label>
+                <label><input type="radio" name="q107" value="Ramipril"> Ramipril</label>
+                <label><input type="radio" name="q107" value="Simvastatin"> Simvastatin</label>
+                <label><input type="radio" name="q107" value="Warfarin"> Warfarin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-108">
+            <p>108- 65-year-old female is referred with a long history of hypertension and episodic urinary tract infections. Dipstick analysis of the urine shows Blood +++ together with protein +++. Her Urea is 150 mg/dl, and Creatinine is 2.5 mg/dl. An ultrasound of abdomen is requested and shows left and right kidneys of 9 cm in size without evidence of obstruction. Which one of the following is the best investigation to diagnose the cause of her renal failure?</p>
+            <div class="options">
+                <label><input type="radio" name="q108" value="Isotope renography"> Isotope renography</label>
+                <label><input type="radio" name="q108" value="IV urography"> IV urography</label>
+                <label><input type="radio" name="q108" value="Renal angiography"> Renal angiography</label>
+                <label><input type="radio" name="q108" value="Renal biopsy"> Renal biopsy</label>
+                <label><input type="radio" name="q108" value="Retrograde pyelography"> Retrograde pyelography</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-109">
+            <p>109- 65-year-old man presents with renal colic. The following day he passes a stone in his urine with analysis revealing that it is composed of uric acid. Which one of the following is the most likely cause of this type of renal stone?</p>
+            <div class="options">
+                <label><input type="radio" name="q109" value="Allopurinol"> Allopurinol</label>
+                <label><input type="radio" name="q109" value="Chronic renal failure"> Chronic renal failure</label>
+                <label><input type="radio" name="q109" value="Primary hyperparathyroidism"> Primary hyperparathyroidism</label>
+                <label><input type="radio" name="q109" value="Secondary polycythemia"> Secondary polycythemia</label>
+                <label><input type="radio" name="q109" value="Thiazide diuretics"> Thiazide diuretics</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-110">
+            <p>110- 30-year-old woman presented with hypertension (160/110 mmHg), elevated titres of antibodies to double-stranded DNA, and proteinuria (I g per 24 hours). A renal biopsy demonstrated WHO class II lupus nephritis (mesangial disease). What is the most appropriate single treatment for this patient?</p>
+            <div class="options">
+                <label><input type="radio" name="q110" value="Antihypertensive medication"> Antihypertensive medication</label>
+                <label><input type="radio" name="q110" value="High-dose corticosteroids"> High-dose corticosteroids</label>
+                <label><input type="radio" name="q110" value="Intravenous cyclophosphamide"> Intravenous cyclophosphamide</label>
+                <label><input type="radio" name="q110" value="Oral cyclophosphamide"> Oral cyclophosphamide</label>
+                <label><input type="radio" name="q110" value="Plasma exchange"> Plasma exchange</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-111">
+            <p>111- 45-year-old man had recurrent nephrolithiasis. Renal function tests and serum calcium measurements were normal. A 24 hour urine collection revealed:<br>
+                Volume 3L<br>
+                Calcium 15 mmol/24 hours (2.5-7.5)<br>
+                Oxalate 200 mmol/24 hours (90-450)<br>
+                Uric acid 3 mmol/24 hours (1.48-4.45)<br>
+                Citrate 2 mmol/24 hours (0.3-3.4)<br>
+                What is the most useful therapy to reduce stone formation?
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q111" value="Allopurinol"> Allopurinol</label>
+                <label><input type="radio" name="q111" value="Dietary calcium restriction"> Dietary calcium restriction</label>
+                <label><input type="radio" name="q111" value="Penicillamine"> Penicillamine</label>
+                <label><input type="radio" name="q111" value="Potassium citrate"> Potassium citrate</label>
+                <label><input type="radio" name="q111" value="Thiazide diuretic"> Thiazide diuretic</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-112">
+            <p>112- 45-year-old lady presents with fatigue and has established End Stage Renal Failure. She has been on-hemodialysis for the past three years and receives dialysis for 3 hours three times a week at a regional hemodialysis centre. At one of her regular visits for hemodialysis she is found to have the following observations and investigations.<br>
+                Blood pressure 160/90<br>
+                Serum K+  5.7 mEq/L<br>
+                Serum corrected calcium 8 mg/dl<br>
+                Hb 9.0 g/dL<br>
+                Creatinine 10 mg/dl<br>
+                Post-dialysis her Blood Pressure is recorded as 140/90. Which of the following is the best management for this lady?
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q112" value="Increase dialysis hours"> Increase dialysis hours</label>
+                <label><input type="radio" name="q112" value="Treat anaemia with erythropoietin"> Treat anaemia with erythropoietin</label>
+                <label><input type="radio" name="q112" value="Treat hyperkalemia"> Treat hyperkalemia</label>
+                <label><input type="radio" name="q112" value="Treat hypertension with ramipril"> Treat hypertension with ramipril</label>
+                <label><input type="radio" name="q112" value="Treat hypocalcaemia"> Treat hypocalcaemia</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-113">
+            <p>113- 21-year-old female presents with a joint pains and rash. On examination her blood pressure 150/90. Investigations revealed:<br>
+                Creatinine 1.2 mg/dl<br>
+                Anti ds DNA antibodies Strongly positive<br>
+                24 hour urinary protein excretion 1.7g (&lt;0.2)<br>
+                Renal biopsy .. Membranous nephropathy<br>
+                What is the most appropriate next treatment?
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q113" value="ACE inhibitor for blood pressure control"> ACE inhibitor for blood pressure control</label>
+                <label><input type="radio" name="q113" value="Cyclophosphamide"> Cyclophosphamide</label>
+                <label><input type="radio" name="q113" value="NSAIDs for arthralgia"> NSAIDs for arthralgia</label>
+                <label><input type="radio" name="q113" value="Prednisolone and immunosuppressives"> Prednisolone and immunosuppressives</label>
+                <label><input type="radio" name="q113" value="Warfarin anticoagulation"> Warfarin anticoagulation</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-114">
+            <p>114- 45-year-old man presented to the Nephrology clinic with severe generalized edema. Investigations revealed:<br>
+                Serum albumin 20 g/L<br>
+                24 hour urinary protein excretion 14.6g<br>
+                Renal biopsy Normal on light microscopy, normal on immunofluorescence<br>
+                What is the most likely diagnosis?
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q114" value="Focal segmental glomerulosclerosis"> Focal segmental glomerulosclerosis</label>
+                <label><input type="radio" name="q114" value="Membranous nephropathy"> Membranous nephropathy</label>
+                <label><input type="radio" name="q114" value="Minimal change disease"> Minimal change disease</label>
+                <label><input type="radio" name="q114" value="Myeloma"> Myeloma</label>
+                <label><input type="radio" name="q114" value="Renal vein thrombosis"> Renal vein thrombosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-115">
+            <p>115- 18-year-old female student attends the clinic as her father has just died with end-stage renal failure. He had been diagnosed with autosomal dominant polycystic kidney disease. She wishes to know what investigations she requires. Which of the following is an appropriate strategy in her management?</p>
+            <div class="options">
+                <label><input type="radio" name="q115" value="Genetics referral"> Genetics referral</label>
+                <label><input type="radio" name="q115" value="Glomerular Filtration Rate Estimation"> Glomerular Filtration Rate Estimation</label>
+                <label><input type="radio" name="q115" value="MRI brain"> MRI brain</label>
+                <label><input type="radio" name="q115" value="Ultrasound of the renal tract"> Ultrasound of the renal tract</label>
+                <label><input type="radio" name="q115" value="Urine Dipstick"> Urine Dipstick</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-116">
+            <p>116- Which is not a recognized cause of microalbuminuria:</p>
+            <div class="options">
+                <label><input type="radio" name="q116" value="Nephrotic syndrome"> Nephrotic syndrome</label>
+                <label><input type="radio" name="q116" value="Diabetes mellitus with early renal involvement"> Diabetes mellitus with early renal involvement</label>
+                <label><input type="radio" name="q116" value="Congestive cardiac failure"> Congestive cardiac failure</label>
+                <label><input type="radio" name="q116" value="Strenuous physical exercise"> Strenuous physical exercise</label>
+                <label><input type="radio" name="q116" value="Fever"> Fever</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-117">
+            <p>117- Blood level of all rises in ARF EXCEPT:</p>
+            <div class="options">
+                <label><input type="radio" name="q117" value="Uric acid"> Uric acid</label>
+                <label><input type="radio" name="q117" value="K+"> K+</label>
+                <label><input type="radio" name="q117" value="Na +"> Na +</label>
+                <label><input type="radio" name="q117" value="Creatinine"> Creatinine</label>
+                <label><input type="radio" name="q117" value="Phosphate"> Phosphate</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-118">
+            <p>118- Which is not a neuromuscular complication of uremia:</p>
+            <div class="options">
+                <label><input type="radio" name="q118" value="Encephalopathy"> Encephalopathy</label>
+                <label><input type="radio" name="q118" value="Myelopathy"> Myelopathy</label>
+                <label><input type="radio" name="q118" value="Neuropathy"> Neuropathy</label>
+                <label><input type="radio" name="q118" value="Myopathy"> Myopathy</label>
+                <label><input type="radio" name="q118" value="Myoclonus"> Myoclonus</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-119">
+            <p>119- Commonest renal lesion in diabetic nephropathy is :</p>
+            <div class="options">
+                <label><input type="radio" name="q119" value="Diffuse glomerulosclerosis"> Diffuse glomerulosclerosis</label>
+                <label><input type="radio" name="q119" value="Chronic interstitial nephritis"> Chronic interstitial nephritis</label>
+                <label><input type="radio" name="q119" value="Arterio nephrosclerosis"> Arterio nephrosclerosis</label>
+                <label><input type="radio" name="q119" value="Nodular glomerulosclerosis"> Nodular glomerulosclerosis</label>
+                <label><input type="radio" name="q119" value="Papillary necrosis"> Papillary necrosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-120">
+            <p>120- Serum urea and creatinine remain normal in:</p>
+            <div class="options">
+                <label><input type="radio" name="q120" value="Hepato-renal syndrome"> Hepato-renal syndrome</label>
+                <label><input type="radio" name="q120" value="Hemolytic-uremic syndrome"> Hemolytic-uremic syndrome</label>
+                <label><input type="radio" name="q120" value="Hydronephrosis"> Hydronephrosis</label>
+                <label><input type="radio" name="q120" value="Acute renal failure"> Acute renal failure</label>
+                <label><input type="radio" name="q120" value="Lipoid nephrosis"> Lipoid nephrosis</label>
+            </div>
+        </div>
+
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+        <button class="btn" id="submitBtn" onclick="evaluateQuiz()" style="display: none;">Submit Quiz</button>
+
+        <div class="result" id="result">
+            <h2>Results</h2>
+            <div id="score"></div>
+            <div id="answers-summary"></div>
+        </div>
+    </div>
+
+    <script>
+        // إضافة حدث للكيبورد لمنع حفظ الصفحة
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "s") {
+                event.preventDefault();
+                alert("تم منع حفظ الصفحة!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع فتح أدوات المطور
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+                event.preventDefault();
+                alert("تم تعطيل أدوات المطور!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع النقر بزر اليمين
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // يمنع فتح قائمة السياق
+            alert("النقر بزر الماوس الأيمن غير مسموح به.");
+        });
+
+        let currentQuestion = 1;
+        const totalQuestions = 120;
+        let score = 0;
+        let timerInterval;
+        const answers = {
+            q1: "Rhabdomyolysis-induced acute kidney injury",
+            q2: "Colchicine 1.2 mg po initially, followed by 0.6 mg 1 hour later",
+            q3: "Give IV hydration with normal saline or sodium bicarbonate prior to and following the procedure.",
+            q4: "Renal artery fibromuscular dysplasia",
+            q5: "IV calcium gluconate",
+            q6: "Acute tubular necrosis",
+            q7: "His creatinine will return to 1.3 over the next week.",
+            q8: "IgA nephropathy (Berger disease)",
+            q9: "Serum calcium",
+            q10: "Add angiotensin-converting enzyme inhibitor or angiotensin receptor blocker.",
+            q11: "Focal segmental glomerulosclerosis",
+            q12: "Urinary sodium",
+            q13: "The fractional urea clearance",
+            q14: "Chromosome 16",
+            q15: "No chronic kidney disease",
+            q16: "atherosclerotic disease",
+            q17: "Levofloxacin",
+            q18: "red blood cell (RBC) casts in urine",
+            q19: "GN",
+            q20: "postural hypotension",
+            q21: "Membranous glomerulonephritis",
+            q22: "Goodpasture's syndrome",
+            q23: "Dehydration",
+            q24: "Frank haematuria",
+            q25: "Diffuse proliferative glomerulonephritis",
+            q26: "Tuberous sclerosis",
+            q27: "Serum urea",
+            q28: "15",
+            q29: "Impaired renal production of 1,25 dihydroxy vitamin D3",
+            q30: "An ACR sample is collected over 24 hours",
+            q31: "urea",
+            q32: "erythrocyte casts",
+            q33: "subepithelial humps",
+            q34: "papillary necrosis and tubulointerstitial inflammation",
+            q35: "enalapril",
+            q36: "diuretic use, vomiting",
+            q37: "Papillary necrosis and inability to concentrate the urine",
+            q38: "renal parenchymal uric acid crystals",
+            q39: "multiple myeloma",
+            q40: "amyloidosis",
+            q41: "tubular damage by light chains",
+            q42: "DRE and prostate specific antigen (PSA)",
+            q43: "ACE inhibitors",
+            q44: "can be caused by fever",
+            q45: "heavy proteinuria",
+            q46: "polycythemia",
+            q47: "proximal tubule",
+            q48: "renal cell carcinoma",
+            q49: "ultrasound",
+            q50: "diabetes mellitus",
+            q51: "Wegener’s granulomatosis",
+            q52: "amyloid disease",
+            q53: "acute tubular necrosis (ATN)",
+            q54: "rheumatoid arthritis (RA)",
+            q55: "cystinuria",
+            q56: "Nephrotic syndrome",
+            q57: "Iron",
+            q58: "Hypertension",
+            q59: "< 400 mL urine/24 hrs",
+            q60: "Diffuse cortical necrosis",
+            q61: "IgA nephropathy",
+            q62: "Acute interstitial nephritis",
+            q63: "Diuretics",
+            q64: "Abdominal ultrasound (US) scan",
+            q65: "Tuberculosis",
+            q66: "Glomerulonephritis",
+            q67: "Cephalexin",
+            q68: "May be diagnosed on prenatal ultrasound",
+            q69: "Serum electrolytes, urea and creatinine",
+            q70: "Abdominal US scan",
+            q71: "Start ACE inhibitors",
+            q72: "Renal carcinoma",
+            q73: "Hyperuricemic nephropathy",
+            q74: "UTI",
+            q75: "Minimal change glomerulonephritis",
+            q76: "Post streptococcal glomerulonephritis",
+            q77: "Alport’s syndrome",
+            q78: "Bladder cancer",
+            q79: "Acute tubular necrosis",
+            q80: "Wegener’s granulomatosis",
+            q81: "Renal arteriography",
+            q82: "Microalbuminuria",
+            q83: "Oral prednisone",
+            q84: "Pyelonephritis",
+            q85: "Bleomycin",
+            q86: "Response to corticosteroid",
+            q87: "Acute intermittent porphyria",
+            q88: "Clinical evidence of pericarditis",
+            q89: "Snake bite",
+            q90: "Chronic renal failure (CRF)",
+            q91: "Initiation of dialysis",
+            q92: "Treatment with IV ampicillin and gentamicin",
+            q93: "Allopurinol",
+            q94: "Acute interstitial nephritis",
+            q95: "Analgesic nephropathy",
+            q96: "Renal biopsy",
+            q97: "Tomato, potato crisps; banana.",
+            q98: "Hyponatremia",
+            q99: "Renal size on ultrasound scan",
+            q100: "MR angiography",
+            q101: "Diabetic nephropathy",
+            q102: "IgA nephropathy",
+            q103: "Amitriptyline",
+            q104: "RBC casts in urinary sediment",
+            q105: "Minimal change disease",
+            q106: "Trial of steroid therapy",
+            q107: "Ramipril",
+            q108: "Renal angiography",
+            q109: "Thiazide diuretics",
+            q110: "Antihypertensive medication",
+            q111: "Thiazide diuretic",
+            q112: "Treat anaemia with erythropoietin",
+            q113: "Prednisolone and immunosuppressives",
+            q114: "Minimal change disease",
+            q115: "Genetics referral",
+            q116: "Nephrotic syndrome",
+            q117: "Na+",
+            q118: "Myelopathy",
+            q119: "Diffuse glomerulosclerosis",
+            q120: "Hydronephrosis"
+        };
+
+        function showQuestion() {
+            document.querySelectorAll('.question').forEach((q, index) => {
+                q .style.display = index + 1 === currentQuestion ? 'block' : 'none';
+            });
+            document.getElementById('nextBtn').style.display = currentQuestion < totalQuestions ? 'block' : 'none';
+            document.getElementById('submitBtn').style.display = currentQuestion === totalQuestions ? 'block' : 'none';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            clearInterval(timerInterval);
+            startTimer();
+            showQuestion();
+        }
+
+        function startTimer() {
+            let timeRemaining = 60;
+            document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    if (currentQuestion < totalQuestions) {
+                        nextQuestion();
+                    } else {
+                        evaluateQuiz();
+                    }
+                }
+            }, 1000);
+        }
+
+        function evaluateQuiz() {
+            score = 0;
+            let summary = '';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                const correctAnswer = answers[`q${i}`];
+                const questionElement = document.getElementById(`question-${i}`);
+                const options = document.querySelectorAll(`input[name="q${i}"]`);
+                let questionSummary = `<p><strong>Question ${i}: </strong>${questionElement.querySelector('p').innerText}</p>`;
+
+                options.forEach(option => {
+                    const optionLabel = option.parentElement;
+                    if (option.value === correctAnswer) {
+                        optionLabel.style.color = 'green';
+                    } else if (selectedOption && selectedOption.value === option.value) {
+                        optionLabel.style.color = 'red';
+                    }
+                });
+
+                questionSummary += `<div>Answer: <strong>${selectedOption ? selectedOption.value : 'None selected'}</strong></div>`;
+                questionSummary += `<div>Correct answer: <strong>${correctAnswer}</strong></div>`;
+
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                    summary += questionSummary + `<p class="correct">Correct</p>`;
+                } else {
+                    summary += questionSummary + `<p class="incorrect">Incorrect</p>`;
+                }
+            }
+
+            document.getElementById('score').textContent = `Your score: ${score} out of ${totalQuestions}`;
+            document.getElementById('answers-summary').innerHTML = summary;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('timer').style.display = 'none'; 
+            document.querySelectorAll('.question').forEach((q) => q.style.display = 'none');
+
+            clearInterval(timerInterval);
+        }
+
+        window.onload = function() {
+            showQuestion();
+            startTimer();
+        };
+        
+        
+        function nextQuestion() {
+    // Increase the current question counter
+            currentQuestion++;
+
+            // Reset the timer
+            clearInterval(timerInterval); // Stop the current timer
+            startTimer(); // Start the timer from the beginning
+
+            // Show the next question
+            showQuestion();
+        }
+        
+    </script>
+</body>
+</html>
